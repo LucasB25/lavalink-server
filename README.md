@@ -1,6 +1,13 @@
 ```
 
 ```
+## Where can I get support?
+
+For any questions or issues, feel free to join our [Discord server](https://discord.gg/5shqv9Kygv) for assistance.
+
+```
+
+```
 ## Where can I host Lavalink?
 
 - [Windows](https://github.com/LucasB25/lavalink-server#windows)
@@ -37,8 +44,8 @@ git clone https://github.com/LucasB25/lavalink-server.git
 
 **pm2**
 
-- install node.js 
-- install pm2 `npm i pm2`
+- install [node.js](https://nodejs.org)
+- install pm2 `npm install pm2 -g`
 - run `pm2 start java -- -jar Lavalink.jar`
 
 ```
@@ -67,6 +74,22 @@ git clone https://github.com/LucasB25/lavalink-server.git
 To run your script : `./start.sh`
 Another option is as follows to execute shell script: `sh start.sh` OR `bash start.sh` Or `sudo bash start.sh`
 
+**Java**
+
+- install node.js 
+```cmd
+sudo get update && get -y install openjdk-17-jdk 
+```
+```cmd
+java -version 
+
+```
+
+```cmd
+export JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64/ echo $JAVA_HOME 
+
+```
+
 **pm2**
 
 - install node.js 
@@ -78,6 +101,6 @@ sudo apt install nodejs
 
 ```
 
-- install pm2 `npm i pm2`
+- install pm2 `npm install pm2 -g`
 - run `pm2 start java -- -jar Lavalink.jar`
 
