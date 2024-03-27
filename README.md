@@ -1,13 +1,6 @@
-<!-- PROJECT LOGO -->
-<p align="center">
-  <a href="https://github.com/LucasB25/lavalink-server">
-    <img src="https://media.discordapp.net/attachments/902568151731015770/936134410737180703/059C7F8B-2A75-4AF7-9DCA-B4C13E826D22.png" alt="Pbot-plus" width="200" height="100">
-  </a>
-</p>
-
 ```
 
-```markdown
+```
 ## Where can I host Lavalink?
 
 - [Windows](https://github.com/LucasB25/lavalink-server#windows)
@@ -15,14 +8,14 @@
 
 ```
 
-```markdown
+```
 ## What is PM2?
 
 PM2 is a production process manager for Node.js applications with a built-in load balancer. It allows you to keep applications **alive forever**, to reload them without downtime, and to facilitate common system admin tasks.
 
 ```
 
-```markdown
+```
 ### Windows 
 
 - Download and install Java [here](https://adoptopenjdk.net/). 
@@ -50,7 +43,7 @@ git clone https://github.com/LucasB25/lavalink-server.git
 
 ```
 
-```markdown
+```
 ## Linux
 
 - download curl
