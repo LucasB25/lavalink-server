@@ -9,6 +9,7 @@ For any questions or issues, feel free to join our [Discord server](https://disc
 
 - [Windows](https://github.com/LucasB25/lavalink-server?tab=readme-ov-file#windows)
 - [Linux](https://github.com/LucasB25/lavalink-server?tab=readme-ov-file#linux)
+- [Replit](https://github.com/LucasB25/lavalink-server?tab=readme-ov-file#replit)
 
 ```
 
@@ -96,3 +97,33 @@ sudo apt install nodejs
 - install pm2 `npm install pm2 -g`
 - run `pm2 start java -- -jar Lavalink.jar`
 
+```
+
+```
+## Replit
+
+[![Run on Replit](https://repl.it/badge/github/LucasB25/lavalink-server)](https://repl.it/github/LucasB25/lavalink-server)
+
+**Connecting**
+
+- Lavalink's port will always be 443 in Replit.
+- Default password: `youshallnotpass`.
+- Using custom Lavalink client.
+
+**Important notes**
+
+
+- To keep this 24/7, you need to make an account on UptimeRobot service and make HTTP request to your app every 5 minutes. For example, if your app is named `lavalink-repl` and your Replit username is `ahmasa`, then make an HTTP request to `https://lavalink-repl.ahmasa.repl.co`.
+- Do not forget to set your password (in `application.yml` file).
+- Connection to node must be secured, e.g., `https/wss`.
+
+**Example Configuration**
+
+```json
+{
+  "host": "lavalink.LucasB25.repl.co",
+  "password": "youshallnotpass",
+  "port": 443,
+  "identifier": "lavalink v4",     
+  "secure": true
+}
