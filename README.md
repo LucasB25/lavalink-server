@@ -21,7 +21,7 @@ PM2 is a production process manager for Node.js applications with a built-in loa
 ```
 
 ```
-### Windows 
+## Windows 
 
 - Download and install Java [here](https://adoptopenjdk.net/). 
 
