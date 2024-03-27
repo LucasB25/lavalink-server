@@ -44,7 +44,6 @@ git clone https://github.com/LucasB25/lavalink-server.git
 - install [Node.js](https://nodejs.org)
 - install pm2 `npm install pm2 -g`
 - run `pm2 start java -- -jar Lavalink.jar`
-
 ```
 
 ```
@@ -78,13 +77,10 @@ Another option is as follows to execute shell script: `sh start.sh` OR `bash sta
 sudo get update && get -y install openjdk-17-jdk 
 ```
 ```cmd
-java -version 
-
-```
-
-```cmd
 export JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64/ echo $JAVA_HOME 
-
+```
+```cmd
+java -version 
 ```
 
 **pm2**
@@ -95,7 +91,6 @@ sudo apt update
 ```
 ```cmd
 sudo apt install nodejs
-
 ```
 
 - install pm2 `npm install pm2 -g`
