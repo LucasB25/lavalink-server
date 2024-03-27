@@ -1,6 +1,3 @@
-```
-
-```
 ## Where can I get support?
 
 For any questions or issues, feel free to join our [Discord server](https://discord.gg/5shqv9Kygv) for assistance.
@@ -10,8 +7,8 @@ For any questions or issues, feel free to join our [Discord server](https://disc
 ```
 ## Where can I host Lavalink?
 
-- [Windows](https://github.com/LucasB25/lavalink-server#windows)
-- [Linux](https://github.com/LucasB25/lavalink-server#linux)
+- [Windows](https://github.com/LucasB25/lavalink-server?tab=readme-ov-file#windows)
+- [Linux](https://github.com/LucasB25/lavalink-server?tab=readme-ov-file#linux)
 
 ```
 
