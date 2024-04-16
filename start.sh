@@ -17,4 +17,9 @@ echo "Lavalink JAR downloaded successfully."
 
 # Run Lavalink
 echo "Starting Lavalink..."
-java -jar Lavalink.jar
+if java -jar "Lavalink.jar"; then
+    echo "Lavalink started successfully."
+else
+    echo "Failed to start Lavalink."
+    exit 1
+fi
