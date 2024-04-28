@@ -63,22 +63,23 @@ cd ~
 
 3. Setup the server:
 ```cmd
-wget -O ServerSetup.sh https://raw.githubusercontent.com/LucasB25/lavalink-server/main/LinuxSetupLavalink.sh
+wget -O ServerSetup.sh https://raw.githubusercontent.com/LucasB25/lavalink-server/main/LavalinkLinux/ServerSetup.sh
 chmod +rwx ServerSetup.sh
 ./ServerSetup.sh
 ```
 
 4. Setup Lavalink:
 ```cmd
-wget -O LavalinkSetup.sh https://raw.githubusercontent.com/LucasB25/lavalink-server/main/LavalinkSetup.sh
+wget -O LavalinkSetup.sh https://raw.githubusercontent.com/LucasB25/lavalink-server/main/LavalinkLinux/LavalinkSetup.sh
 chmod +rwx LavalinkSetup.sh
 ./LavalinkSetup.sh
 ```
 
-**pm2**
-
-- install pm2 `npm install pm2 -g`
-- run `pm2 start java -- -jar Lavalink.jar`
+5. How to start it 24/7
+```cmd
+cd LavalinkServer
+pm2 start --name Lavalink --max-memory-restart 4G java -- -jar Lavalink.jar
+```
 
 ```
 

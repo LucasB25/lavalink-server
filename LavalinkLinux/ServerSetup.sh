@@ -1,74 +1,96 @@
 #!/bin/bash
 
-echo "LucasB25-Setup :: Starting the Setup"
+log() {
+    echo "LucasB25-Setup :: $1"
+}
 
-cd ~
+error_exit() {
+    echo "Error: $1" >&2
+    exit 1
+}
 
-# update everything
-sudo apt-get update -y
-sudo apt-get upgrade -y
-echo "LucasB25-Setup :: Updated and upgraded the Current System"
+install_package() {
+    package_name=$1
+    log "Installing $package_name"
+    sudo apt-get install -y "$package_name" || error_exit "Failed to install $package_name"
+}
 
-# ensure hostname
-hostnamevar=$(hostname)
-if ! grep -q $hostnamevar "/etc/hosts"; then
-    echo "127.0.0.1 $hostnamevar" >> /etc/hosts && echo "::1 $hostnamevar" >> /etc/hosts
-    echo "Added $hostnamevar - hostname"
-    
-fi
+update_upgrade_system() {
+    log "Updating and upgrading the system"
+    sudo apt-get update -y && sudo apt-get upgrade -y || error_exit "Failed to update and upgrade the system"
+}
 
-# install sudo
-sudo apt-get -y install sudo
-echo "LucasB25-Setup :: Ensured sudo is installed"
+ensure_sudo() {
+    log "Ensuring sudo is installed"
+    sudo apt-get install -y sudo || error_exit "Failed to install sudo"
+}
 
-# install curl
-sudo apt-get -y install curl
-echo "LucasB25-Setup :: Ensured curl is installed"
+ensure_curl() {
+    log "Ensuring curl is installed"
+    install_package "curl"
+}
 
-# remove apache
-sudo apt-get purge -y --auto-remove apache*
-echo "LucasB25-Setup :: Removed default installed apache package"
+remove_apache() {
+    log "Removing default installed Apache package"
+    sudo apt-get purge -y --auto-remove apache* || error_exit "Failed to remove Apache package"
+}
 
-# install nodejs
-curl -fsSL https://deb.nodesource.com/setup_20.x | bash -
-sudo apt-get install -y nodejs
-echo "LucasB25-Setup :: Installed nodejs"
+install_nodejs() {
+    log "Installing Node.js"
+    curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash -
+    install_package "nodejs"
+}
 
-# install pip3
-sudo apt-get install -y ffmpeg python3-pip
-echo "LucasB25-Setup :: Installed pip3 and ffmpeg"
+install_pip3() {
+    log "Installing pip3 and ffmpeg"
+    install_package "python3-pip"
+    install_package "ffmpeg"
+}
 
-# install java
-wget https://download.java.net/openjdk/jdk18/ri/openjdk-18+36_linux-x64_bin.tar.gz
-sudo mkdir -p /usr/lib/jvm
-sudo tar zxvf openjdk-18+36_linux-x64_bin.tar.gz -C /usr/lib/jvm
-sudo update-alternatives --install "/usr/bin/java" "java" "/usr/lib/jvm/jdk-18/bin/java" 1
-sudo update-alternatives --set java /usr/lib/jvm/jdk-18/bin/java
+install_java() {
+    log "Installing Java version 18 (OpenJDK)"
+    sudo mkdir -p /usr/lib/jvm
+    wget -O /tmp/openjdk.tar.gz https://download.java.net/openjdk/jdk18/ri/openjdk-18+36_linux-x64_bin.tar.gz || error_exit "Failed to download Java"
+    sudo tar zxvf /tmp/openjdk.tar.gz -C /usr/lib/jvm || error_exit "Failed to extract Java"
+    sudo update-alternatives --install "/usr/bin/java" "java" "/usr/lib/jvm/jdk-18/bin/java" 1
+    sudo update-alternatives --set java /usr/lib/jvm/jdk-18/bin/java
+    java -version || error_exit "Java installation failed"
+    rm /tmp/openjdk.tar.gz
+}
+
+install_pm2() {
+    log "Installing pm2, npm-check-updates, yarn, npm@latest via npm"
+    sudo npm i -g pm2 npm-check-updates yarn npm@latest || error_exit "Failed to install pm2 and related packages"
+}
+
+install_pm2_logrotate() {
+    log "Installing pm2-logrotate"
+    pm2 install pm2-logrotate || error_exit "Failed to install pm2-logrotate"
+    pm2 set pm2-logrotate:max_size 50M
+    pm2 set pm2-logrotate:compress true
+    pm2 set pm2-logrotate:rotateInterval '0 12 * * *'
+}
+
+# Main script starts here
+log "Starting the setup"
+
+update_upgrade_system
+ensure_sudo
+ensure_curl
+remove_apache
+install_nodejs
+install_pip3
+install_java
+install_pm2
+install_pm2_logrotate
+
+log "Java Version:"
 java -version
-rm openjdk-18+36_linux-x64_bin.tar.gz
-echo "LucasB25-Setup :: Installed java version 18 (openjdk)"
-
-# install pm2
-npm i -g pm2 npm-check-updates yarn npm@latest
-echo "LucasB25-Setup :: Installed pm2, npm-check-updates yarn, npm@latest - via npm"
-
-# install pm2-logrotate
-pm2 install pm2-logrotate
-pm2 set pm2-logrotate:max_size 50M
-pm2 set pm2-logrotate:compress true
-pm2 set pm2-logrotate:rotateInterval '0 12 * * *'
-echo "LucasB25-Setup :: Installed pm2-logrotate to keep pm2 logs low, flushing when logs exceed 50M and everyday at 12:00 of your cron-time via cron: '0 12 * * *'"
-
-# check
-echo "Java Version: "
-java -version
-echo "Python Version: "
+log "Python Version:"
 python3.9 --version
-echo "Nodejs Version: "
+log "Nodejs Version:"
 node -v
-echo "NPM Version: "
+log "NPM Version:"
 npm --version
 
-# finish
-echo "LucasB25-Setup :: Everything is setup"
-echo "LucasB25-Setup :: A reboot is recommended"
+log "Everything is set up. A reboot is recommended."
