@@ -50,49 +50,32 @@ git clone https://github.com/LucasB25/lavalink-server.git
 ```
 ## Linux
 
-- download curl
+1. Install sudo and wget:
 ```cmd
-sudo apt install -y curl
+sudo apt-get install -y sudo wget 
 ```
 
-**Note**: _Java 17 LTS or newer required. (we recommend running the latest LTS version or newer)_ If you are using **sdkman** then _its a manager, not Java, you have to install sdkman and use sdkman to install Java_
-
-**Warning**: Java v17 has issues with Lavalink.
-
-- download or gitclone 
+2. Switch to root user and navigate to the home directory:
 ```cmd
-git clone https://github.com/LucasB25/lavalink-server.git
+sudo su
+cd ~
 ```
-- cd `lavalink-server`
 
-- Run lavalink and install java
-`chmod +x start.sh`
-
-To run your script : `./start.sh`
-Another option is as follows to execute shell script: `sh start.sh` OR `bash start.sh` Or `sudo bash start.sh`
-
-**Java**
-
-- install Java17
+3. Setup the server:
 ```cmd
-sudo get update && get -y install openjdk-17-jdk 
+wget -O ServerSetup.sh https://raw.githubusercontent.com/LucasB25/lavalink-server/main/LinuxSetupLavalink.sh
+chmod +rwx ServerSetup.sh
+./ServerSetup.sh
 ```
+
+4. Setup Lavalink:
 ```cmd
-export JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64/ echo $JAVA_HOME 
-```
-```cmd
-java -version 
+wget -O LavalinkSetup.sh https://raw.githubusercontent.com/LucasB25/lavalink-server/main/LavalinkSetup.sh
+chmod +rwx LavalinkSetup.sh
+./LavalinkSetup.sh
 ```
 
 **pm2**
-
-- install node.js 
-```cmd
-sudo apt update
-```
-```cmd
-sudo apt install nodejs
-```
 
 - install pm2 `npm install pm2 -g`
 - run `pm2 start java -- -jar Lavalink.jar`

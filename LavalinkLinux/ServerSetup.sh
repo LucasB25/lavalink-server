@@ -1,3 +1,5 @@
+#!/bin/bash
+
 echo "LucasB25-Setup :: Starting the Setup"
 
 cd ~
