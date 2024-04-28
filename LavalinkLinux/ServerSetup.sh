@@ -41,12 +41,6 @@ install_nodejs() {
     install_package "nodejs"
 }
 
-install_pip3() {
-    log "Installing pip3 and ffmpeg"
-    install_package "python3-pip"
-    install_package "ffmpeg"
-}
-
 install_java() {
     log "Installing Java version 18 (OpenJDK)"
     sudo mkdir -p /usr/lib/jvm
@@ -86,8 +80,6 @@ install_pm2_logrotate
 
 log "Java Version:"
 java -version
-log "Python Version:"
-python3.9 --version
 log "Nodejs Version:"
 node -v
 log "NPM Version:"
