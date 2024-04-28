@@ -14,13 +14,6 @@ For any questions or issues, feel free to join our [Discord server](https://disc
 ```
 
 ```
-## What is PM2?
-
-PM2 is a production process manager for Node.js applications with a built-in load balancer. It allows you to keep applications **alive forever**, to reload them without downtime, and to facilitate common system admin tasks.
-
-```
-
-```
 ## Windows 
 
 - Download and install Java [here](https://adoptopenjdk.net/). 
@@ -75,15 +68,12 @@ chmod +rwx LavalinkSetup.sh
 ./LavalinkSetup.sh
 ```
 
-5. How to start it 24/7
+5. How to start it 24/7:
 ```cmd
 cd LavalinkServer
 pm2 start --name Lavalink --max-memory-restart 4G java -- -jar Lavalink.jar
 ```
 
-```
-
-```
 ## Replit
 
 [![Run on Replit](https://repl.it/badge/github/LucasB25/lavalink-server)](https://repl.it/github/LucasB25/lavalink-server)
