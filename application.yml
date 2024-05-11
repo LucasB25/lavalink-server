@@ -10,7 +10,7 @@ plugins:
     countryCode: "US" # the country code you want to use for searching lyrics via ISRC. See https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2
     # The clients to use for track loading. See below for a list of valid clients.
     # Clients are queried in the order they are given (left-to-right)
-    clients: ["MUSIC", "ANDROID", "WEB"]
+    clients: ["MUSIC", "ANDROID", "WEB", "TVHTML5EMBEDDED"]
   lavasrc:
     providers: # Custom providers for track loading. This is the default
       - 'ytsearch:"%ISRC%"'
@@ -61,7 +61,7 @@ lavalink:
     - dependency: "com.github.topi314.lavasrc:lavasrc-plugin:4.1.0"
       repository: "https://maven.lavalink.dev/releases" # this is optional for lavalink v4 or greater
       snapshot: false # set to true if you want to use snapshot builds (see below)
-    - dependency: dev.lavalink.youtube:youtube-plugin:1.1.0
+    - dependency: dev.lavalink.youtube:youtube-plugin:1.2.0
       repository: https://maven.lavalink.dev/releases
       snapshot: false
   pluginsDir: './plugins'
