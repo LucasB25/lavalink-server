@@ -27,10 +27,12 @@ For any questions or issues, feel free to join our [Discord server](https://disc
 git clone https://github.com/LucasB25/lavalink-server.git
 ```
 
-X. Setup Lavalink:
+1. Setup Lavalink:
+Runs Windows PowerShell as administrator
 ```cmd
-wget -O LavalinkSetup.sh https://raw.githubusercontent.com/LucasB25/lavalink-server/main/LavalinkWindows/LavalinkSetup.ps1
-Right-click on LavalinkSetup.ps1 > Run with PowerShell
+bitsadmin /transfer myDownloadJob /download /priority normal https://raw.githubusercontent.com/LucasB25/lavalink-server/main/LavalinkWindows/LavalinkSetup.ps1 C:\LavalinkSetup.ps1
+cd "C:\"
+& .\LavalinkSetup.ps1
 ```
 
 **pm2**
