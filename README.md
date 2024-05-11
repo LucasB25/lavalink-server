@@ -27,11 +27,11 @@ For any questions or issues, feel free to join our [Discord server](https://disc
 git clone https://github.com/LucasB25/lavalink-server.git
 ```
 
-- go into the folder with `lavalink-server`
-
-- edit `application.yml` Password and port 
-
-- run for: double click on `start.sh`
+X. Setup Lavalink:
+```cmd
+wget -O LavalinkSetup.sh https://raw.githubusercontent.com/LucasB25/lavalink-server/main/LavalinkWindows/LavalinkSetup.ps1
+Right-click on LavalinkSetup.ps1 > Run with PowerShell
+```
 
 **pm2**
 

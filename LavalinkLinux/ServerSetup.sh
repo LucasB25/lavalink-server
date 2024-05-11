@@ -73,7 +73,6 @@ ensure_sudo
 ensure_curl
 remove_apache
 install_nodejs
-install_pip3
 install_java
 install_pm2
 install_pm2_logrotate
