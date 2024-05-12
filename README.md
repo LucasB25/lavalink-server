@@ -24,7 +24,7 @@ cd "C:\"
 & .\ServerSetup.ps1
 ```
 
-2. Restart windows
+2. ⚠️ Restart windows ⚠️
 
 3. Run again ServerSetup.ps1
 ```cmd
@@ -47,9 +47,6 @@ cd "C:\LavalinkServer"
 pm2 start --name Lavalink --max-memory-restart 4G java -- -jar Lavalink.jar
 ```
 
-```
-
-```
 ## Linux
 
 1. Install sudo and wget:
@@ -83,9 +80,6 @@ cd LavalinkServer
 pm2 start --name Lavalink --max-memory-restart 4G java -- -jar Lavalink.jar
 ```
 
-```
-
-```
 ## Replit
 
 [![Run on Replit](https://repl.it/badge/github/LucasB25/lavalink-server)](https://repl.it/github/LucasB25/lavalink-server)
