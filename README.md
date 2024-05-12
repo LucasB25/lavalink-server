@@ -26,7 +26,7 @@ cd "C:\"
 
 2. Restart windows
 
-3.
+3. Run again ServerSetup.ps1
 ```cmd
 - Run Windows PowerShell as administrator
 cd "C:\"
