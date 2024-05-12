@@ -48,6 +48,8 @@ pm2 start --name Lavalink --max-memory-restart 4G java -- -jar Lavalink.jar
 ```
 
 ```
+
+```
 ## Linux
 
 1. Install sudo and wget:
@@ -79,6 +81,8 @@ chmod +rwx LavalinkSetup.sh
 ```bash
 cd LavalinkServer
 pm2 start --name Lavalink --max-memory-restart 4G java -- -jar Lavalink.jar
+```
+
 ```
 
 ```
