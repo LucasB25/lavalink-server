@@ -16,66 +16,72 @@ For any questions or issues, feel free to join our [Discord server](https://disc
 ```
 ## Windows 
 
-- Download and install Java [here](https://adoptopenjdk.net/). 
-
-**Note**: Java 17 LTS or newer is required. (We recommend running the latest LTS version or newer). If you are using **sdkman**, it's a manager, not Java. You have to install sdkman and use sdkman to install Java.
-
-**Warning**: Java v17 has issues with Lavalink.
-
-- Download or clone via Git:
+1. Setup the server:
 ```cmd
-git clone https://github.com/LucasB25/lavalink-server.git
+- Run Windows PowerShell as administrator
+bitsadmin /transfer myDownloadJob /download /priority normal https://raw.githubusercontent.com/LucasB25/lavalink-server/main/LavalinkWindows/ServerSetup.ps1 C:\ServerSetup.ps1
+cd "C:\"
+& .\ServerSetup.ps1
 ```
 
-1. Setup Lavalink:
-Runs Windows PowerShell as administrator
+2. Restart windows
+
+3.
 ```cmd
+- Run Windows PowerShell as administrator
+cd "C:\"
+& .\ServerSetup.ps1
+```
+
+4. Setup Lavalink:
+```cmd
+- Run Windows PowerShell as administrator
 bitsadmin /transfer myDownloadJob /download /priority normal https://raw.githubusercontent.com/LucasB25/lavalink-server/main/LavalinkWindows/LavalinkSetup.ps1 C:\LavalinkSetup.ps1
 cd "C:\"
 & .\LavalinkSetup.ps1
 ```
 
-**pm2**
-
-- install [Node.js](https://nodejs.org)
-- install pm2 `npm install pm2 -g`
-- run `pm2 start java -- -jar Lavalink.jar`
+5. How to start it 24/7:
+```cmd
+cd "C:\LavalinkServer"
+pm2 start --name Lavalink --max-memory-restart 4G java -- -jar Lavalink.jar
 ```
 
 ```
 ## Linux
 
 1. Install sudo and wget:
-```cmd
+```bash
 sudo apt-get install -y sudo wget 
 ```
 
 2. Switch to root user and navigate to the home directory:
-```cmd
+```bash
 sudo su
 cd ~
 ```
 
 3. Setup the server:
-```cmd
+```bash
 wget -O ServerSetup.sh https://raw.githubusercontent.com/LucasB25/lavalink-server/main/LavalinkLinux/ServerSetup.sh
 chmod +rwx ServerSetup.sh
 ./ServerSetup.sh
 ```
 
 4. Setup Lavalink:
-```cmd
+```bash
 wget -O LavalinkSetup.sh https://raw.githubusercontent.com/LucasB25/lavalink-server/main/LavalinkLinux/LavalinkSetup.sh
 chmod +rwx LavalinkSetup.sh
 ./LavalinkSetup.sh
 ```
 
 5. How to start it 24/7:
-```cmd
+```bash
 cd LavalinkServer
 pm2 start --name Lavalink --max-memory-restart 4G java -- -jar Lavalink.jar
 ```
 
+```
 ## Replit
 
 [![Run on Replit](https://repl.it/badge/github/LucasB25/lavalink-server)](https://repl.it/github/LucasB25/lavalink-server)
