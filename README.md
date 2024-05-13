@@ -19,8 +19,8 @@ For any questions or issues, feel free to join our [Discord server](https://disc
 1. Setup the server:
 ```cmd
 - Run Windows PowerShell as administrator
-bitsadmin /transfer myDownloadJob /download /priority normal https://raw.githubusercontent.com/LucasB25/lavalink-server/main/LavalinkWindows/ServerSetup.ps1 C:\ServerSetup.ps1
 cd "C:\"
+bitsadmin /transfer myDownloadJob /download /priority normal https://raw.githubusercontent.com/LucasB25/lavalink-server/main/LavalinkWindows/ServerSetup.ps1 C:\ServerSetup.ps1
 & .\ServerSetup.ps1
 ```
 
@@ -36,8 +36,8 @@ cd "C:\"
 4. Setup Lavalink:
 ```cmd
 - Run Windows PowerShell as administrator
-bitsadmin /transfer myDownloadJob /download /priority normal https://raw.githubusercontent.com/LucasB25/lavalink-server/main/LavalinkWindows/LavalinkSetup.ps1 C:\LavalinkSetup.ps1
 cd "C:\"
+bitsadmin /transfer myDownloadJob /download /priority normal https://raw.githubusercontent.com/LucasB25/lavalink-server/main/LavalinkWindows/LavalinkSetup.ps1 C:\LavalinkSetup.ps1
 & .\LavalinkSetup.ps1
 ```
 
