@@ -52,17 +52,9 @@ install_java() {
     rm /tmp/openjdk.tar.gz
 }
 
-install_pm2() {
-    log "Installing pm2, npm-check-updates, yarn, npm@latest via npm"
-    sudo npm i -g pm2 npm-check-updates yarn npm@latest || error_exit "Failed to install pm2 and related packages"
-}
-
-install_pm2_logrotate() {
-    log "Installing pm2-logrotate"
-    pm2 install pm2-logrotate || error_exit "Failed to install pm2-logrotate"
-    pm2 set pm2-logrotate:max_size 50M
-    pm2 set pm2-logrotate:compress true
-    pm2 set pm2-logrotate:rotateInterval '0 12 * * *'
+update_npm_packages() {
+    log "Updating npm packages globally"
+    sudo npm i -g npm-check-updates yarn npm@latest || error_exit "Failed to update npm packages"
 }
 
 # Main script starts here
@@ -74,9 +66,9 @@ ensure_curl
 remove_apache
 install_nodejs
 install_java
-install_pm2
-install_pm2_logrotate
+update_npm_packages
 
+# Displaying the versions of Java, Node.js, and NPM
 log "Java Version:"
 java -version
 log "Nodejs Version:"

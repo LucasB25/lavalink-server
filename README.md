@@ -67,6 +67,12 @@ chmod +rwx ServerSetup.sh
 ./ServerSetup.sh
 ```
 
+3. Switch to root user and navigate to the home directory:
+```bash
+sudo su
+cd ~
+```
+
 4. Setup Lavalink:
 ```bash
 wget -O LavalinkSetup.sh https://raw.githubusercontent.com/LucasB25/lavalink-server/main/LavalinkLinux/LavalinkSetup.sh
@@ -74,10 +80,35 @@ chmod +rwx LavalinkSetup.sh
 ./LavalinkSetup.sh
 ```
 
-5. How to start it 24/7:
+# Systemd Service Tuto Commands
+
+- Reload Systemd daemon:
 ```bash
-cd LavalinkServer
-pm2 start --name Lavalink --max-memory-restart 4G java -- -jar Lavalink.jar
+$ sudo systemctl daemon-reload
+```
+- Enable a service at boot:
+```bash
+$ sudo systemctl enable lavalink
+```
+- Start a service:
+```bash
+$ sudo systemctl start lavalink
+```
+- View service logs:
+```bash
+$ sudo journalctl -u lavalink
+```
+- View service logs:
+```bash
+$ sudo systemctl status lavalink
+```
+- Stop a service:
+```bash
+$ sudo systemctl stop lavalink
+```
+- Restart a service:
+```bash
+$ sudo systemctl restart lavalink
 ```
 
 ## Replit
