@@ -98,7 +98,7 @@ $ sudo systemctl start lavalink
 ```bash
 $ sudo journalctl -u lavalink
 ```
-- View service logs:
+- Check service status:
 ```bash
 $ sudo systemctl status lavalink
 ```
