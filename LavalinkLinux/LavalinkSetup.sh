@@ -50,7 +50,7 @@ log "application.yml downloaded successfully."
 log "Setup completed successfully."
 
 # Write the systemd service file for Lavalink
-cat <<EOF | sudo tee /etc/systemd/system/lavalinks.service >/dev/null
+cat <<EOF | sudo tee /etc/systemd/system/lavalink.service >/dev/null
 [Unit]
 # Describe the service
 Description=Lavalink Service
