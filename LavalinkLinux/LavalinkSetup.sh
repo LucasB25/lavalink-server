@@ -42,7 +42,7 @@ log "Lavalink JAR downloaded successfully."
 
 # Download application.yml file
 log "Downloading application.yml..."
-if ! wget -O application.yml https://raw.githubusercontent.com/LucasB25/lavalink-server/main/application.yml; then
+if ! curl -sSfL "https://raw.githubusercontent.com/LucasB25/lavalink-server/main/application.yml" -o application.yml; then
     error_exit "Failed to download application.yml file."
 fi
 log "application.yml downloaded successfully."
