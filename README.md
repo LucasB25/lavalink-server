@@ -1,4 +1,3 @@
-[![Version][version-shield]](version-url)
 [![Contributors][contributors-shield]][contributors-url]
 [![Forks][forks-shield]][forks-url]
 [![Stargazers][stars-shield]][stars-url]
@@ -9,33 +8,21 @@
 [![Remix on Glitch](https://cdn.glitch.com/2703baf2-b643-4da7-ab91-7ee2a2d00b5b%2Fremix-button.svg)](https://glitch.com/edit/#!/import/github/LucasB25/AikouBot)
 
 <!-- PROJECT LOGO -->
-<br />
-
   <h1 align="center">Lavalink Server</h1>
 
   <p align="center">
-    <br />
-    <br />
         <a href="https://discord.gg/AhUJa2kdAr">Serveur Support</a>
     ·
     <a href="https://github.com/LucasB25/lavalink-server/issues">Report Bug & Request Feature</a>
   </p>
 </p>
 
-# Lavalink Server Setup
-
-```
-
-```
 ## Where can I host Lavalink?
 
 - [Windows](#windows)
 - [Linux](#linux)
 - [Replit](#replit)
 
-```
-
-```
 ## Windows
 
 1. **Setup the server:**
@@ -175,7 +162,6 @@ Thanks goes to these wonderful people :
   <img src="https://contrib.rocks/image?repo=LucasB25/lavalink-server" alt="contributors" width="500" />
 </a>
 
-[version-shield]: https://img.shields.io/github/package-json/v/LucasB25/lavalink-server?style=for-the-badge
 [contributors-shield]: https://img.shields.io/github/contributors/LucasB25/lavalink-server.svg?style=for-the-badge
 [contributors-url]: https://github.com/LucasB25/lavalink-server/graphs/contributors
 [forks-shield]: https://img.shields.io/github/forks/LucasB25/lavalink-server.svg?style=for-the-badge
