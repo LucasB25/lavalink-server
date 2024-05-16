@@ -1,114 +1,142 @@
-## Where can I get support?
+[![Version][version-shield]](version-url)
+[![Contributors][contributors-shield]][contributors-url]
+[![Forks][forks-shield]][forks-url]
+[![Stargazers][stars-shield]][stars-url]
+[![Issues][issues-shield]][issues-url]
+[![Support Server][support-shield]][support-server]
+[![MIT License][license-shield]][license-url]
+[![Run on Repl.it](https://repl.it/badge/github/LucasB25/AikouBot)](https://repl.it/github/LucasB25/AikouBot)
+[![Remix on Glitch](https://cdn.glitch.com/2703baf2-b643-4da7-ab91-7ee2a2d00b5b%2Fremix-button.svg)](https://glitch.com/edit/#!/import/github/LucasB25/AikouBot)
 
-For any questions or issues, feel free to join our [Discord server](https://discord.gg/5shqv9Kygv) for assistance.
+<!-- PROJECT LOGO -->
+<br />
+
+  <h1 align="center">Lavalink Server</h1>
+
+  <p align="center">
+    <br />
+    <br />
+        <a href="https://discord.gg/AhUJa2kdAr">Serveur Support</a>
+    ·
+    <a href="https://github.com/LucasB25/lavalink-server/issues">Report Bug & Request Feature</a>
+  </p>
+</p>
+
+# Lavalink Server Setup
 
 ```
 
 ```
 ## Where can I host Lavalink?
 
-- [Windows](https://github.com/LucasB25/lavalink-server?tab=readme-ov-file#windows)
-- [Linux](https://github.com/LucasB25/lavalink-server?tab=readme-ov-file#linux)
-- [Replit](https://github.com/LucasB25/lavalink-server?tab=readme-ov-file#replit)
+- [Windows](#windows)
+- [Linux](#linux)
+- [Replit](#replit)
 
 ```
 
 ```
-## Windows 
+## Windows
 
-1. Setup the server:
-```cmd
-- Run Windows PowerShell as administrator
+1. **Setup the server:**
+```powershell
+# Run Windows PowerShell as administrator
 cd "C:\"
 bitsadmin /transfer myDownloadJob /download /priority normal https://raw.githubusercontent.com/LucasB25/lavalink-server/main/LavalinkWindows/ServerSetup.ps1 C:\ServerSetup.ps1
 & .\ServerSetup.ps1
 ```
 
-2. ⚠️ Restart windows ⚠️
+2. ⚠️ **Restart Windows** ⚠️
 
-3. Run again ServerSetup.ps1
-```cmd
-- Run Windows PowerShell as administrator
+3. **Run again ServerSetup.ps1:**
+```powershell
+# Run Windows PowerShell as administrator
 cd "C:\"
 & .\ServerSetup.ps1
 ```
 
-4. Setup Lavalink:
-```cmd
-- Run Windows PowerShell as administrator
+4. **Setup Lavalink:**
+```powershell
+# Run Windows PowerShell as administrator
 cd "C:\"
 bitsadmin /transfer myDownloadJob /download /priority normal https://raw.githubusercontent.com/LucasB25/lavalink-server/main/LavalinkWindows/LavalinkSetup.ps1 C:\LavalinkSetup.ps1
 & .\LavalinkSetup.ps1
 ```
 
-5. How to start it 24/7:
-```cmd
+5. **How to start it 24/7:**
+```powershell
 cd "C:\LavalinkServer"
 pm2 start --name Lavalink --max-memory-restart 4G java -- -jar Lavalink.jar
 ```
 
 ## Linux
 
-1. Install sudo and wget:
+1. **Install sudo and wget:**
 ```bash
 sudo apt-get install -y sudo wget 
 ```
 
-2. Switch to root user and navigate to the home directory:
+2. **Switch to root user and navigate to the home directory:**
 ```bash
 sudo su
 cd ~
 ```
 
-3. Setup the server:
+3. **Setup the server:**
 ```bash
 wget -O ServerSetup.sh https://raw.githubusercontent.com/LucasB25/lavalink-server/main/LavalinkLinux/ServerSetup.sh
 chmod +rwx ServerSetup.sh
 ./ServerSetup.sh
 ```
 
-3. Switch to root user and navigate to the home directory:
+4. **Switch to root user and navigate to the home directory:**
 ```bash
 sudo su
 cd ~
 ```
 
-4. Setup Lavalink:
+5. **Setup Lavalink:**
 ```bash
 wget -O LavalinkSetup.sh https://raw.githubusercontent.com/LucasB25/lavalink-server/main/LavalinkLinux/LavalinkSetup.sh
 chmod +rwx LavalinkSetup.sh
 ./LavalinkSetup.sh
 ```
 
-# Systemd Service Tuto Commands
+## Systemd Service Tuto Commands
 
-- Reload Systemd daemon:
+- **Reload Systemd daemon:**
 ```bash
-$ sudo systemctl daemon-reload
+sudo systemctl daemon-reload
 ```
-- Enable a service at boot:
+
+- **Enable a service at boot:**
 ```bash
-$ sudo systemctl enable lavalink
+sudo systemctl enable lavalink
 ```
-- Start a service:
+
+- **Start a service:**
 ```bash
-$ sudo systemctl start lavalink
+sudo systemctl start lavalink
 ```
-- View service logs:
+
+- **View service logs:**
 ```bash
-$ sudo journalctl -u lavalink
+sudo journalctl -u lavalink
 ```
-- Check service status:
+
+- **Check service status:**
 ```bash
-$ sudo systemctl status lavalink
+sudo systemctl status lavalink
 ```
-- Stop a service:
+
+- **Stop a service:**
 ```bash
-$ sudo systemctl stop lavalink
+sudo systemctl stop lavalink
 ```
-- Restart a service:
+
+- **Restart a service:**
 ```bash
-$ sudo systemctl restart lavalink
+sudo systemctl restart lavalink
 ```
 
 ## Replit
@@ -122,7 +150,6 @@ $ sudo systemctl restart lavalink
 - Using custom Lavalink client.
 
 **Important notes**
-
 
 - To keep this 24/7, you need to make an account on UptimeRobot service and make HTTP request to your app every 5 minutes. For example, if your app is named `lavalink-repl` and your Replit username is `ahmasa`, then make an HTTP request to `https://lavalink-repl.ahmasa.repl.co`.
 - Do not forget to set your password (in `application.yml` file).
@@ -138,3 +165,26 @@ $ sudo systemctl restart lavalink
   "identifier": "lavalink v4",     
   "secure": true
 }
+```
+
+## 👥 Contributors
+
+Thanks goes to these wonderful people :
+
+<a href="https://github.com/LucasB25/lavalink-server/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=LucasB25/lavalink-server" alt="contributors" width="500" />
+</a>
+
+[version-shield]: https://img.shields.io/github/package-json/v/LucasB25/lavalink-server?style=for-the-badge
+[contributors-shield]: https://img.shields.io/github/contributors/LucasB25/lavalink-server.svg?style=for-the-badge
+[contributors-url]: https://github.com/LucasB25/lavalink-server/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/LucasB25/lavalink-server.svg?style=for-the-badge
+[forks-url]: https://github.com/LucasB25/lavalink-server/network/members
+[stars-shield]: https://img.shields.io/github/stars/LucasB25/lavalink-server.svg?style=for-the-badge
+[stars-url]: https://github.com/LucasB25/lavalink-server/stargazers
+[issues-shield]: https://img.shields.io/github/issues/LucasB25/lavalink-server.svg?style=for-the-badge
+[issues-url]: https://github.com/LucasB25/lavalink-server/issues
+[license-shield]: https://img.shields.io/github/license/LucasB25/lavalink-server.svg?style=for-the-badge
+[license-url]: https://github.com/LucasB25/lavalink-server/blob/mains/LICENSE
+[support-server]: https://discord.gg/AhUJa2kdAr
+[support-shield]: https://img.shields.io/discord/942117923001098260.svg?style=for-the-badge&logo=discord&colorB=7289DA

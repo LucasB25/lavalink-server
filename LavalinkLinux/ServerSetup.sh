@@ -1,28 +1,32 @@
 #!/bin/bash
 
+set -e
+
+LOG_PREFIX="LucasB25-Setup :: "
+
 log() {
-    echo "LucasB25-Setup :: $1"
+    printf "%s%s\n" "$LOG_PREFIX" "$1"
 }
 
 error_exit() {
-    echo "Error: $1" >&2
+    printf "Error: %s\n" "$1" >&2
     exit 1
 }
 
 install_package() {
-    package_name=$1
+    local package_name="$1"
     log "Installing $package_name"
-    sudo apt-get install -y "$package_name" || error_exit "Failed to install $package_name"
+    sudo apt install -y "$package_name" || error_exit "Failed to install $package_name"
 }
 
 update_upgrade_system() {
     log "Updating and upgrading the system"
-    sudo apt-get update -y && sudo apt-get upgrade -y || error_exit "Failed to update and upgrade the system"
+    sudo apt update -y && sudo apt upgrade -y || error_exit "Failed to update and upgrade the system"
 }
 
 ensure_sudo() {
     log "Ensuring sudo is installed"
-    sudo apt-get install -y sudo || error_exit "Failed to install sudo"
+    sudo apt install -y sudo || error_exit "Failed to install sudo"
 }
 
 ensure_curl() {
@@ -32,7 +36,7 @@ ensure_curl() {
 
 remove_apache() {
     log "Removing default installed Apache package"
-    sudo apt-get purge -y --auto-remove apache* || error_exit "Failed to remove Apache package"
+    sudo apt purge -y --auto-remove apache* || error_exit "Failed to remove Apache package"
 }
 
 install_nodejs() {
@@ -44,7 +48,8 @@ install_nodejs() {
 install_java() {
     log "Installing Java version 18 (OpenJDK)"
     sudo mkdir -p /usr/lib/jvm
-    wget -O /tmp/openjdk.tar.gz https://download.java.net/openjdk/jdk18/ri/openjdk-18+36_linux-x64_bin.tar.gz || error_exit "Failed to download Java"
+    local java_tar_url="https://download.java.net/openjdk/jdk18/ri/openjdk-18+36_linux-x64_bin.tar.gz"
+    wget -O /tmp/openjdk.tar.gz "$java_tar_url" || error_exit "Failed to download Java"
     sudo tar zxvf /tmp/openjdk.tar.gz -C /usr/lib/jvm || error_exit "Failed to extract Java"
     sudo update-alternatives --install "/usr/bin/java" "java" "/usr/lib/jvm/jdk-18/bin/java" 1
     sudo update-alternatives --set java /usr/lib/jvm/jdk-18/bin/java
