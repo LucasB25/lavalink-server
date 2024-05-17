@@ -13,17 +13,24 @@ plugins:
     clients: ["MUSIC", "ANDROID", "WEB", "TVHTML5EMBEDDED"]
   lavasrc:
     providers: # Custom providers for track loading. This is the default
-      - 'ytsearch:"%ISRC%"'
+    #Youtube
+      - "ytsearch:\"%ISRC%\""
       - "ytsearch:%QUERY%"
-      - 'ytmsearch:"%ISRC%"'
+      - "ytmsearch:\"%ISRC%\""
       - "ytmsearch:%QUERY%"
+    #Soundcloud
       - "scsearch:%QUERY%"
+    #Spotify
       - "spsearch:%QUERY%"
       - "sprec:%QUERY%"
+    #Applemusic
       - "amsearch:%QUERY%"
+    #Deezer
       - "dzisrc:%ISRC%"
       - "dzsearch:%QUERY%"
+    #yandexmusic
       - "ymsearch:%QUERY%"
+      - "ymrec:%QUERY%"
     sources:
       spotify: false # Enable Spotify source
       applemusic: false # Enable Apple Music source
@@ -68,7 +75,7 @@ lavalink:
   plugins:
     - dependency: "com.github.topi314.lavasrc:lavasrc-plugin:4.1.0"
       snapshot: false # set to true if you want to use snapshot builds (see below)
-    - dependency: dev.lavalink.youtube:youtube-plugin:1.2.0
+    - dependency: dev.lavalink.youtube:youtube-plugin:1.3.0
       snapshot: false
   pluginsDir: './plugins'
   server:
@@ -80,6 +87,7 @@ lavalink:
       soundcloud: true
       twitch: true
       vimeo: true
+      mixer: true
       nico: true
       http: true # warning: keeping HTTP enabled without a proxy configured could expose your server's IP address.
       local: false
