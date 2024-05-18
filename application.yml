@@ -87,8 +87,8 @@ lavalink:
   plugins:
     - dependency: "com.github.topi314.lavasrc:lavasrc-plugin:4.1.1"
       snapshot: false # set to true if you want to use snapshot builds (see below)
-    - dependency: dev.lavalink.youtube:youtube-plugin:1.3.0
-      snapshot: false
+    - dependency: "dev.lavalink.youtube:youtube-plugin:1.3.0"
+      snapshot: false # set to true if you want to use snapshot builds (see below)
   pluginsDir: './plugins'
   server:
     password: "youshallnotpass"
