@@ -36,7 +36,7 @@ plugins:
       deezer: false # Enable Deezer source
       yandexmusic: false # Enable Yandex Music source
       flowerytts: false # Enable Flowery TTs source
-      youtube: false # Enable YouTube search source (https://github.com/topi314/LavaSearch)
+      youtube: true # Enable YouTube search source (https://github.com/topi314/LavaSearch)
     lyrics-sources:
       spotify: false # Enable Spotify lyrics source
       deezer: false # Enable Deezer lyrics source
