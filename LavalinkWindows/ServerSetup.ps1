@@ -9,12 +9,17 @@ function ErrorExit {
     exit 1
 }
 
-function IsChocolateyInstalled {
-    return Get-Command choco -ErrorAction SilentlyContinue
+function InstallPackage {
+    param($packageName)
+    Log "Installing $packageName"
+    choco install $packageName -y
+    if ($LASTEXITCODE -ne 0) {
+        ErrorExit "Failed to install $packageName"
+    }
 }
 
-function InstallChocolatey {
-    if (-not (IsChocolateyInstalled)) {
+function EnsureChocolatey {
+    if (-not (Get-Command choco -ErrorAction SilentlyContinue)) {
         Log "Installing Chocolatey"
         Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
         if ($LASTEXITCODE -ne 0) {
@@ -25,36 +30,14 @@ function InstallChocolatey {
     }
 }
 
-function InstallPackage {
-    param($packageName)
-    Log "Installing $packageName"
-    choco install $packageName -y
-    if ($LASTEXITCODE -ne 0) {
-        ErrorExit "Failed to install $packageName"
-    }
-}
-
-function UpdateUpgradeSystem {
-    Log "Updating and upgrading the system"
-    choco upgrade all -y
-    if ($LASTEXITCODE -ne 0) {
-        ErrorExit "Failed to update and upgrade the system"
-    }
-}
-
 function InstallNodeJS {
     Log "Installing Node.js"
-    choco install nodejs -y
-    if ($LASTEXITCODE -ne 0) {
-        ErrorExit "Failed to install Node.js"
-    }
+    InstallPackage "nodejs"
 }
+
 function InstallJava {
     Log "Installing Java version 18 (OpenJDK)"
-    choco install openjdk --version 18.0.0.0 --force -y
-    if ($LASTEXITCODE -ne 0) {
-        ErrorExit "Failed to install Java"
-    }
+    InstallPackage "openjdk --version 18.0.0.0 --force"
 }
 
 function InstallPM2 {
@@ -80,8 +63,8 @@ function InstallPM2Logrotate {
 # Main script starts here
 Log "Starting the setup"
 
-InstallChocolatey
-UpdateUpgradeSystem
+EnsureChocolatey
+InstallPackage "upgrade all"
 InstallNodeJS
 InstallJava
 InstallPM2
