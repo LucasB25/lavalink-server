@@ -92,6 +92,7 @@ chmod +rwx LavalinkSetup.sh
 6. **Config application.yml:**
 ```bash
 sudo nano /home/YOUR_USER_NAME/lavalink/application.yml
+# EDITE
   - email: "your account mail" # Email of Google account
   - password: "your account password" # Password of Google account
   # If you want to use other sources (Spotify, AppleMusic, Deezer, YandexMusic & FloweryTTS), enable and configure them!
@@ -101,7 +102,6 @@ sudo nano /home/YOUR_USER_NAME/lavalink/application.yml
 ```bash
 sudo systemctl daemon-reload
 sudo systemctl restart lavalink
-  - 
 ```
 
 ## Systemd Service Tuto Commands
