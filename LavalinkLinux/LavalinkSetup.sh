@@ -14,7 +14,7 @@ error_exit() {
 }
 
 # Ask for the username
-read -p "Enter the username for running Lavalink: " lavalink_user
+read -p "Enter the username (or 'root' user) for running Lavalink: " lavalink_user
 
 # Check if the username provided exists
 if ! id "$lavalink_user" &>/dev/null; then
