@@ -1,47 +1,60 @@
-function Log {
-    param($message)
-    Write-Host "LucasB25-Setup :: $message"
+# Function to log messages
+function Write-Log {
+    param (
+        [string]$Message,
+        [string]$Level = "INFO"
+    )
+    $timestamp = Get-Date -Format "yyyy-MM-dd HH:mm:ss"
+    Write-Host "[$timestamp] [$Level] LucasB25-Setup :: $Message"
 }
 
+# Function to handle errors and exit
 function ErrorExit {
     param($message)
-    Write-Host "Error: $message" -ForegroundColor Red
+    Write-Log -Message "Error: $message" -Level "ERROR"
     exit 1
 }
 
+# Function to install a package using Chocolatey
 function InstallPackage {
     param($packageName)
-    Log "Installing $packageName"
+    Write-Log -Message "Installing $packageName"
     choco install $packageName -y
     if ($LASTEXITCODE -ne 0) {
         ErrorExit "Failed to install $packageName"
     }
 }
 
+# Function to ensure Chocolatey is installed
 function EnsureChocolatey {
     if (-not (Get-Command choco -ErrorAction SilentlyContinue)) {
-        Log "Installing Chocolatey"
-        Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
+        Write-Log -Message "Installing Chocolatey"
+        Set-ExecutionPolicy Bypass -Scope Process -Force
+        [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072
+        iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
         if ($LASTEXITCODE -ne 0) {
             ErrorExit "Failed to install Chocolatey"
         }
     } else {
-        Log "Chocolatey is already installed"
+        Write-Log -Message "Chocolatey is already installed"
     }
 }
 
+# Function to install Node.js
 function InstallNodeJS {
-    Log "Installing Node.js"
+    Write-Log -Message "Installing Node.js"
     InstallPackage "nodejs"
 }
 
+# Function to install Java
 function InstallJava {
-    Log "Installing Java version 18 (OpenJDK)"
-    InstallPackage "openjdk --version 18.0.0.0 --force"
+    Write-Log -Message "Installing Java version 18 (OpenJDK)"
+    InstallPackage "openjdk --version=18.0.0.0 --force"
 }
 
+# Function to install pm2 and related packages
 function InstallPM2 {
-    Log "Installing pm2, npm-check-updates, yarn, npm@latest via npm"
+    Write-Log -Message "Installing pm2, npm-check-updates, yarn, npm@latest via npm"
     npm cache clean --force
     npm install -g pm2 npm-check-updates yarn npm@latest
     if ($LASTEXITCODE -ne 0) {
@@ -49,8 +62,9 @@ function InstallPM2 {
     }
 }
 
+# Function to install pm2-logrotate and configure it
 function InstallPM2Logrotate {
-    Log "Installing pm2-logrotate"
+    Write-Log -Message "Installing pm2-logrotate"
     pm2 install pm2-logrotate
     if ($LASTEXITCODE -ne 0) {
         ErrorExit "Failed to install pm2-logrotate"
@@ -61,7 +75,7 @@ function InstallPM2Logrotate {
 }
 
 # Main script starts here
-Log "Starting the setup"
+Write-Log -Message "Starting the setup"
 
 EnsureChocolatey
 InstallPackage "upgrade all"
@@ -70,11 +84,11 @@ InstallJava
 InstallPM2
 InstallPM2Logrotate
 
-Log "Java Version:"
+Write-Log -Message "Java Version:"
 java -version
-Log "Nodejs Version:"
+Write-Log -Message "Node.js Version:"
 node -v
-Log "NPM Version:"
+Write-Log -Message "NPM Version:"
 npm -version
 
-Log "Everything is set up. A reboot is recommended."
+Write-Log -Message "Everything is set up. A reboot is recommended."

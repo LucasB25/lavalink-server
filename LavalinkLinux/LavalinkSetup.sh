@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Exit immediately if a command exits with a non-zero status
+set -e
+
 LOG_PREFIX="LucasB25-Setup :: "
 
 # Function to log messages
@@ -13,40 +16,38 @@ error_exit() {
     exit 1
 }
 
-# Ask for the username
+# Prompt for the username
 read -p "Enter the username (or 'root' user) for running Lavalink: " lavalink_user
 
-# Check if the username provided exists
+# Verify if the provided username exists
 if ! id "$lavalink_user" &>/dev/null; then
     error_exit "User $lavalink_user does not exist."
 fi
 
-# Set directory paths and URLs
+# Define directory paths and URLs
 lavalink_dir="/home/$lavalink_user/lavalink"
 lavalink_jar_url="https://github.com/lavalink-devs/Lavalink/releases/latest/download/Lavalink.jar"
 application_yml_url="https://raw.githubusercontent.com/LucasB25/lavalink-server/main/application.yml"
+systemd_service_file="/etc/systemd/system/lavalink.service"
 
 # Create directory for Lavalink
-log "Creating Lavalink directory..."
-mkdir -p "$lavalink_dir" || error_exit "Failed to create Lavalink directory."
+log "Creating Lavalink directory at $lavalink_dir..."
+mkdir -p "$lavalink_dir"
 log "Lavalink directory created successfully."
 
 # Download the latest release of Lavalink
-log "Downloading Lavalink JAR..."
-if ! curl -sSfL "$lavalink_jar_url" -o "$lavalink_dir/Lavalink.jar"; then
-    error_exit "Failed to download Lavalink JAR."
-fi
+log "Downloading Lavalink JAR from $lavalink_jar_url..."
+curl -sSfL "$lavalink_jar_url" -o "$lavalink_dir/Lavalink.jar"
 log "Lavalink JAR downloaded successfully."
 
-# Download application.yml file
-log "Downloading application.yml..."
-if ! curl -sSfL "$application_yml_url" -o "$lavalink_dir/application.yml"; then
-    error_exit "Failed to download application.yml file."
-fi
+# Download application.yml configuration file
+log "Downloading application.yml from $application_yml_url..."
+curl -sSfL "$application_yml_url" -o "$lavalink_dir/application.yml"
 log "application.yml downloaded successfully."
 
-# Write the systemd service file for Lavalink
-cat <<EOF | sudo tee "/etc/systemd/system/lavalink.service" >/dev/null
+# Create the systemd service file for Lavalink
+log "Creating systemd service file at $systemd_service_file..."
+sudo tee "$systemd_service_file" > /dev/null <<EOF
 [Unit]
 Description=Lavalink Service
 After=syslog.target network.target
@@ -54,26 +55,29 @@ After=syslog.target network.target
 [Service]
 User=$lavalink_user
 WorkingDirectory=$lavalink_dir
-ExecStart=java -Xmx4G -jar "$lavalink_dir/Lavalink.jar"
+ExecStart=java -Xmx4G -jar $lavalink_dir/Lavalink.jar
 Restart=on-failure
 RestartSec=5s
 
 [Install]
 WantedBy=multi-user.target
 EOF
+log "Systemd service file created successfully."
 
-# Reload systemd to pick up the changes
+# Reload systemd to apply changes
+log "Reloading systemd daemon to apply changes..."
 sudo systemctl daemon-reload
 
 # Enable the Lavalink service to start on boot
+log "Enabling Lavalink service to start on boot..."
 sudo systemctl enable lavalink.service
 
 # Start the Lavalink service
+log "Starting Lavalink service..."
 sudo systemctl start lavalink.service
 
-# Wait for services to load
-log "Waiting for services to load..."
+# Wait for the service to initialize
+log "Waiting for Lavalink service to initialize..."
 sleep 10
 
-log "Lavalink service systemd unit file created successfully."
-log "Setup completed successfully."
+log "Lavalink service started successfully and setup is complete."

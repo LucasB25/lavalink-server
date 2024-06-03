@@ -1,7 +1,7 @@
 # Function to log messages
 function Log {
     param($message)
-    Write-Host "LucasB25-Setup :: $message"
+    Write-Output "LucasB25-Setup :: $message"
 }
 
 # Function to handle errors
@@ -17,12 +17,14 @@ $installDir = ".\LavalinkServer"
 # Create directory for Lavalink
 Log "Creating Lavalink directory..."
 try {
-    $null = New-Item -ItemType Directory -Path $installDir -ErrorAction Stop
+    if (-Not (Test-Path -Path $installDir)) {
+        $null = New-Item -ItemType Directory -Path $installDir -ErrorAction Stop
+    }
     Set-Location -Path $installDir -ErrorAction Stop
 } catch {
     ErrorExit "Failed to create or navigate to Lavalink directory."
 }
-Log "Lavalink directory created successfully."
+Log "Lavalink directory ready."
 
 # Download the latest release of Lavalink
 $downloadUrl = "https://github.com/lavalink-devs/Lavalink/releases/latest/download/Lavalink.jar"
