@@ -158,6 +158,7 @@ server: # REST and WS server
   enabled: false # Whether to enable HTTP/2 support
 ```
 ```yml
+  - email: "your account mail" # Email of Google account
   - password: "your account password" # Password of Google account
   # If you want to use other sources (Spotify, AppleMusic, Deezer, YandexMusic & FloweryTTS), enable and configure them!
 ```
