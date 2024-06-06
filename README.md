@@ -148,7 +148,6 @@ sudo systemctl restart lavalink
 **Connecting**
 
 - Lavalink's port will always be 443 in Replit.
-```bash
 application.yml
 # EDITE
 ```yml
