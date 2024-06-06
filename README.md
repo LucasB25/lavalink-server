@@ -148,6 +148,20 @@ sudo systemctl restart lavalink
 **Connecting**
 
 - Lavalink's port will always be 443 in Replit.
+```bash
+application.yml
+# EDITE
+```yml
+server: # REST and WS server
+  port: 443
+  address: 0.0.0.0
+  http2:
+  enabled: false # Whether to enable HTTP/2 support
+```
+```yml
+  - password: "your account password" # Password of Google account
+  # If you want to use other sources (Spotify, AppleMusic, Deezer, YandexMusic & FloweryTTS), enable and configure them!
+```
 - Default password: `youshallnotpass`.
 - Using custom Lavalink client.
 

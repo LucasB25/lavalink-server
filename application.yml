@@ -1,6 +1,8 @@
 server: # REST and WS server
   port: 2333
   address: 0.0.0.0
+  # http2:
+  # enabled: false # Whether to enable HTTP/2 support
 plugins:
   youtube:
     enabled: true # Whether this source can be used.
