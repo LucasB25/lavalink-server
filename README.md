@@ -188,7 +188,7 @@ server: # REST and WS server
 Thanks goes to these wonderful people :
 
 <a href="https://github.com/LucasB25/lavalink-server/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=LucasB25/lavalink-server" alt="contributors" width="500" />
+  <img src="https://contrib.rocks/image?repo=LucasB25/lavalink-server" />
 </a>
 
 [contributors-shield]: https://img.shields.io/github/contributors/LucasB25/lavalink-server.svg?style=for-the-badge
