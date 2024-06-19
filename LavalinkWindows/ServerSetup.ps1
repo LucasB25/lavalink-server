@@ -58,7 +58,7 @@ function InstallNodeJS {
 # Function to install Java
 function InstallJava {
     Write-Log -Message "Installing Java version 18 (OpenJDK)"
-    InstallPackage "openjdk --version=18.0.0.0 --force"
+    InstallPackage "openjdk"
 }
 
 # Function to install pm2 and related packages
