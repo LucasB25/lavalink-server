@@ -25,6 +25,15 @@ function InstallPackage {
     }
 }
 
+# Function to upgrade all packages using Chocolatey
+function UpgradeAllPackages {
+    Write-Log -Message "Upgrading all installed packages"
+    choco upgrade all -y
+    if ($LASTEXITCODE -ne 0) {
+        ErrorExit "Failed to upgrade all packages"
+    }
+}
+
 # Function to ensure Chocolatey is installed
 function EnsureChocolatey {
     if (-not (Get-Command choco -ErrorAction SilentlyContinue)) {
@@ -78,7 +87,7 @@ function InstallPM2Logrotate {
 Write-Log -Message "Starting the setup"
 
 EnsureChocolatey
-InstallPackage "upgrade all"
+UpgradeAllPackages
 InstallNodeJS
 InstallJava
 InstallPM2
