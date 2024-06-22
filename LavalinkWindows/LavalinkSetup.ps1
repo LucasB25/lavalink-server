@@ -6,8 +6,11 @@ function Log {
 
 # Function to handle errors
 function ErrorExit {
-    param($message)
+    param($message, $exception = $null)
     Write-Host "Error: $message" -ForegroundColor Red
+    if ($exception) {
+        Write-Host "Exception: $exception" -ForegroundColor Red
+    }
     exit 1
 }
 
@@ -20,9 +23,8 @@ try {
     if (-Not (Test-Path -Path $installDir)) {
         $null = New-Item -ItemType Directory -Path $installDir -ErrorAction Stop
     }
-    Set-Location -Path $installDir -ErrorAction Stop
 } catch {
-    ErrorExit "Failed to create or navigate to Lavalink directory."
+    ErrorExit "Failed to create Lavalink directory."
 }
 Log "Lavalink directory ready."
 
@@ -33,7 +35,7 @@ Log "Downloading Lavalink JAR from $downloadUrl..."
 try {
     Invoke-WebRequest -Uri $downloadUrl -OutFile $downloadPath -UseBasicParsing -ErrorAction Stop
 } catch {
-    ErrorExit "Failed to download Lavalink JAR."
+    ErrorExit "Failed to download Lavalink JAR.", $_.Exception.Message
 }
 Log "Lavalink JAR downloaded successfully."
 
@@ -44,7 +46,7 @@ Log "Downloading application.yml from $applicationYmlUrl..."
 try {
     Invoke-WebRequest -Uri $applicationYmlUrl -OutFile $applicationYmlPath -UseBasicParsing -ErrorAction Stop
 } catch {
-    ErrorExit "Failed to download application.yml file."
+    ErrorExit "Failed to download application.yml file.", $_.Exception.Message
 }
 Log "application.yml downloaded successfully."
 
