@@ -50,7 +50,16 @@ bitsadmin /transfer myDownloadJob /download /priority normal https://raw.githubu
 & .\LavalinkSetup.ps1
 ```
 
-5. **How to start it 24/7:**
+5. **Config application.yml:**
+```bash
+Edite: C:\LavalinkServer\application.yml
+# EDITE
+  - email: "your account mail" # Email of Google account
+  - password: "your account password" # Password of Google account
+  # If you want to use other sources (Spotify, AppleMusic, Deezer, YandexMusic & FloweryTTS), enable and configure them!
+```
+
+6. **How to start it 24/7:**
 ```powershell
 cd "C:\LavalinkServer"
 pm2 start --name Lavalink --max-memory-restart 4G java -- -jar Lavalink.jar
