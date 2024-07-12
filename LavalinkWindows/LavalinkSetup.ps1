@@ -6,7 +6,10 @@ function Log {
 
 # Function to handle errors
 function ErrorExit {
-    param($message, $exception = $null)
+    param(
+        [string]$message,
+        [string]$exception = $null
+    )
     Write-Host "Error: $message" -ForegroundColor Red
     if ($exception) {
         Write-Host "Exception: $exception" -ForegroundColor Red

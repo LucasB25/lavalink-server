@@ -7,12 +7,6 @@ if ! curl -sSfL "https://github.com/lavalink-devs/Lavalink/releases/latest/downl
     exit 1
 fi
 
-# Check if the download was successful
-if [ ! -f "Lavalink.jar" ]; then
-    echo "Lavalink JAR not found. Exiting."
-    exit 1
-fi
-
 echo "Lavalink JAR downloaded successfully."
 
 # Run Lavalink
