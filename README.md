@@ -5,16 +5,14 @@
 [![Support Server][support-shield]][support-server]
 [![MIT License][license-shield]][license-url]
 [![Run on Repl.it](https://repl.it/badge/github/LucasB25/AikouBot)](https://repl.it/github/LucasB25/AikouBot)
-[![Remix on Glitch](https://cdn.glitch.com/2703baf2-b643-4da7-ab91-7ee2a2d00b5b%2Fremix-button.svg)](https://glitch.com/edit/#!/import/github/LucasB25/AikouBot)
 
 <!-- PROJECT LOGO -->
-  <h1 align="center">Lavalink Server</h1>
+<h1 align="center">Lavalink Server</h1>
 
-  <p align="center">
-        <a href="https://discord.gg/AhUJa2kdAr">Serveur Support</a>
+<p align="center">
+    <a href="https://discord.gg/AhUJa2kdAr">Serveur Support</a>
     ·
     <a href="https://github.com/LucasB25/lavalink-server/issues">Report Bug & Request Feature</a>
-  </p>
 </p>
 
 ## Where can I host Lavalink?
@@ -27,15 +25,15 @@
 
 1. **Setup the server:**
 ```powershell
-# Run Windows PowerShell as administrator
-cd "C:\"
-bitsadmin /transfer myDownloadJob /download /priority normal https://raw.githubusercontent.com/LucasB25/lavalink-server/main/LavalinkWindows/ServerSetup.ps1 C:\ServerSetup.ps1
-& .\ServerSetup.ps1
+   # Run Windows PowerShell as administrator
+   cd "C:\"
+   bitsadmin /transfer myDownloadJob /download /priority normal https://raw.githubusercontent.com/LucasB25/lavalink-server/main/LavalinkWindows/ServerSetup.ps1 C:\ServerSetup.ps1
+   & .\ServerSetup.ps1
 ```
 
 2. ⚠️ **Restart Windows** ⚠️
 
-3. **Run again ServerSetup.ps1:**
+3. **Run ServerSetup.ps1 again:**
 ```powershell
 # Run Windows PowerShell as administrator
 cd "C:\"
@@ -52,8 +50,8 @@ bitsadmin /transfer myDownloadJob /download /priority normal https://raw.githubu
 
 5. **Config application.yml:**
 ```bash
-Edite: C:\LavalinkServer\application.yml
-# EDITE
+Edit: C:\LavalinkServer\application.yml
+# EDIT
   - email: "your account mail" # Email of Google account
   - password: "your account password" # Password of Google account
   # If you want to use other sources (Spotify, AppleMusic, Deezer, YandexMusic & FloweryTTS), enable and configure them!
@@ -101,7 +99,7 @@ chmod +rwx LavalinkSetup.sh
 6. **Config application.yml:**
 ```bash
 sudo nano /home/YOUR_USER_NAME/lavalink/application.yml
-# EDITE
+# EDIT
   - email: "your account mail" # Email of Google account
   - password: "your account password" # Password of Google account
   # If you want to use other sources (Spotify, AppleMusic, Deezer, YandexMusic & FloweryTTS), enable and configure them!
@@ -113,7 +111,7 @@ sudo systemctl daemon-reload
 sudo systemctl restart lavalink
 ```
 
-## Systemd Service Tuto Commands
+## Systemd Service Commands
 
 - **Reload Systemd daemon:**
 ```bash
@@ -167,18 +165,18 @@ server: # REST and WS server
     enabled: false # Whether to enable HTTP/2 support
 ```
 ```yml
-  - email: "your account mail" # Email of Google account
-  - password: "your account password" # Password of Google account
-  # If you want to use other sources (Spotify, AppleMusic, Deezer, YandexMusic & FloweryTTS), enable and configure them!
+- email: "your account mail" # Email of Google account
+- password: "your account password" # Password of Google account
+# If you want to use other sources (Spotify, AppleMusic, Deezer, YandexMusic & FloweryTTS), enable and configure them!
 ```
 - Default password: `youshallnotpass`.
 - Using custom Lavalink client.
 
 **Important notes**
 
-- To keep this 24/7, you need to make an account on UptimeRobot service and make HTTP request to your app every 5 minutes. For example, if your app is named `lavalink-repl` and your Replit username is `ahmasa`, then make an HTTP request to `https://lavalink-repl.ahmasa.repl.co`.
-- Do not forget to set your password (in `application.yml` file).
-- Connection to node must be secured, e.g., `https/wss`.
+- To keep this 24/7, you need to make an account on UptimeRobot service and make HTTP requests to your app every 5 minutes. For example, if your app is named - lavalink-repl and your Replit username is ahmasa, then make an HTTP request to https://lavalink-repl.ahmasa.repl.co.
+- Do not forget to set your password (in application.yml file).
+- Connection to node must be secured, e.g., https/wss.
 
 **Example Configuration**
 
