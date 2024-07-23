@@ -20,18 +20,14 @@ function InstallPackage {
     param($packageName)
     Write-Log -Message "Installing $packageName"
     choco install $packageName -y
-    if ($LASTEXITCODE -ne 0) {
-        ErrorExit "Failed to install $packageName"
-    }
+    if ($LASTEXITCODE -ne 0) { ErrorExit "Failed to install $packageName" }
 }
 
-# Function to upgrade all packages using Chocolatey
+# Function to ensure Chocolatey is installed
 function UpgradeAllPackages {
     Write-Log -Message "Upgrading all installed packages"
     choco upgrade all -y
-    if ($LASTEXITCODE -ne 0) {
-        ErrorExit "Failed to upgrade all packages"
-    }
+    if ($LASTEXITCODE -ne 0) { ErrorExit "Failed to upgrade all packages" }
 }
 
 # Function to ensure Chocolatey is installed
@@ -41,9 +37,7 @@ function EnsureChocolatey {
         Set-ExecutionPolicy Bypass -Scope Process -Force
         [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072
         iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
-        if ($LASTEXITCODE -ne 0) {
-            ErrorExit "Failed to install Chocolatey"
-        }
+        if ($LASTEXITCODE -ne 0) { ErrorExit "Failed to install Chocolatey" }
     } else {
         Write-Log -Message "Chocolatey is already installed"
     }
@@ -66,18 +60,14 @@ function InstallPM2 {
     Write-Log -Message "Installing pm2, npm-check-updates, yarn, npm@latest via npm"
     npm cache clean --force
     npm install -g pm2 npm-check-updates yarn npm@latest
-    if ($LASTEXITCODE -ne 0) {
-        ErrorExit "Failed to install pm2 and related packages"
-    }
+    if ($LASTEXITCODE -ne 0) { ErrorExit "Failed to install pm2 and related packages" }
 }
 
 # Function to install pm2-logrotate and configure it
 function InstallPM2Logrotate {
     Write-Log -Message "Installing pm2-logrotate"
     pm2 install pm2-logrotate
-    if ($LASTEXITCODE -ne 0) {
-        ErrorExit "Failed to install pm2-logrotate"
-    }
+    if ($LASTEXITCODE -ne 0) { ErrorExit "Failed to install pm2-logrotate" }
     pm2 set pm2-logrotate:max_size 50M
     pm2 set pm2-logrotate:compress true
     pm2 set pm2-logrotate:rotateInterval '0 12 * * *'

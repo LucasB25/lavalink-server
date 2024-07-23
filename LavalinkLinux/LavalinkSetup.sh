@@ -20,9 +20,7 @@ error_exit() {
 read -p "Enter the username (or 'root' user) for running Lavalink: " lavalink_user
 
 # Verify if the provided username exists
-if ! id "$lavalink_user" &>/dev/null; then
-    error_exit "User $lavalink_user does not exist."
-fi
+id "$lavalink_user" &>/dev/null || error_exit "User $lavalink_user does not exist."
 
 # Define directory paths and URLs
 lavalink_dir="/home/$lavalink_user/lavalink"

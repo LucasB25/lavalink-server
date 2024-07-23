@@ -25,10 +25,10 @@
 
 1. **Setup the server:**
 ```powershell
-   # Run Windows PowerShell as administrator
-   cd "C:\"
-   bitsadmin /transfer myDownloadJob /download /priority normal https://raw.githubusercontent.com/LucasB25/lavalink-server/main/LavalinkWindows/ServerSetup.ps1 C:\ServerSetup.ps1
-   & .\ServerSetup.ps1
+# Run Windows PowerShell as administrator
+cd "C:\"
+bitsadmin /transfer myDownloadJob /download /priority normal https://raw.githubusercontent.com/LucasB25/lavalink-server/main/LavalinkWindows/ServerSetup.ps1 C:\ServerSetup.ps1
+& .\ServerSetup.ps1
 ```
 
 2. ⚠️ **Restart Windows** ⚠️
@@ -208,5 +208,5 @@ Thanks goes to these wonderful people :
 [issues-url]: https://github.com/LucasB25/lavalink-server/issues
 [license-shield]: https://img.shields.io/github/license/LucasB25/lavalink-server.svg?style=for-the-badge
 [license-url]: https://github.com/LucasB25/lavalink-server/blob/mains/LICENSE
-[support-server]: https://discord.gg/AhUJa2kdAr
 [support-shield]: https://img.shields.io/discord/942117923001098260.svg?style=for-the-badge&logo=discord&colorB=7289DA
+[support-server]: https://discord.gg/AhUJa2kdAr
