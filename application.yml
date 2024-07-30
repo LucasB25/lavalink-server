@@ -14,9 +14,15 @@ plugins:
     # Clients are queried in the order they are given (so the first client is queried first and so on...)
     clients:
       - MUSIC
-      - ANDROID_TESTSUITE
       - WEB
+      - ANDROID_TESTSUITE
+      - ANDROID_MUSIC
       - TVHTML5EMBEDDED
+      - ANDROID_LITE
+      - MEDIA_CONNECT
+      - IOS
+  jiosaavn:
+    apiURL: "https://saavn.dev/api" # The API URL for JioSaavn
   lavasrc:
     providers: # Custom providers for track loading. This is the default
       # - "dzisrc:%ISRC%" # Deezer ISRC provider
@@ -87,6 +93,8 @@ plugins:
 
 lavalink:
   plugins:
+    - dependency: "com.github.appujet:jiosaavn-plugin:v0.1.6"
+      repository: "https://jitpack.io"
     - dependency: "dev.lavalink.youtube:youtube-plugin:1.5.0"
       snapshot: false  # set to true if you want to use snapshot builds (see below)
     - dependency: "com.github.topi314.lavasrc:lavasrc-plugin:4.2.0"
