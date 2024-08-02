@@ -145,9 +145,9 @@ lavalink:
       #strategy: "RotateOnBan" # RotateOnBan | LoadBalance | NanoSwitch | RotatingNanoSwitch
       #searchTriggersFail: true # Whether a search 429 should trigger marking the ip as failing
       #retryLimit: -1 # -1 = use default lavaplayer value | 0 = infinity | >0 = retry will happen this numbers times
-    #youtubeConfig: # Required for avoiding all age restrictions by YouTube, some restricted videos still can be played without.
-      #email: "your account mail" # Email of Google account
-      #password: "your account password" # Password of Google account
+    youtubeConfig: # Required for avoiding all age restrictions by YouTube, some restricted videos still can be played without.
+      email: "your account mail" # Email of Google account
+      password: "your account password" # Password of Google account
     #httpConfig: # Useful for blocking bad-actors from ip-grabbing your music node and attacking it, this way only the http proxy will be attacked
       #proxyHost: "localhost" # Hostname of the proxy, (ip or domain)
       #proxyPort: 3128 # Proxy port, 3128 is the default for squidProxy
@@ -175,6 +175,19 @@ logging:
     root: INFO
     # Set this to DEBUG to enable more detailed logging from Lavalink.
     lavalink: INFO
+
+    # Set this to TRACE to see all WebSocket messages.
+    lavalink.server.io.SocketContext: OFF
+    # Log all track exceptions (COMMON, SUSPICIOUS & FAULT). Set to DEBUG to enable detailed logging.
+    com.sedmelluq.discord.lavaplayer.tools.ExceptionTools: OFF
+    # Set to DEBUG to enable detailed logging of HTTP requests and responses.
+    com.sedmelluq.discord.lavaplayer.tools.io.PersistentHttpStream: OFF
+    # Set to DEBUG to enable detailed logging of YouTube HTTP requests and responses.
+    com.sedmelluq.discord.lavaplayer.source.youtube.YoutubePersistentHttpStream: OFF
+    # Set to DEBUG to enable detailed logging for the LavaSrc plugin.
+    com.github.topi314.lavasrc.LavaSrcTools: OFF
+    # Set to DEBUG to enable detailed logging for the YouTube audio source manager.
+    dev.lavalink.youtube.YoutubeAudioSourceManager: OFF
 
   request:
     enabled: true
