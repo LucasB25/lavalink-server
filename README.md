@@ -10,189 +10,191 @@
 <h1 align="center">Lavalink Server</h1>
 
 <p align="center">
-    <a href="https://discord.gg/AhUJa2kdAr">Serveur Support</a>
+    <a href="https://discord.gg/AhUJa2kdAr">Support Server</a>
     ·
     <a href="https://github.com/LucasB25/lavalink-server/issues">Report Bug & Request Feature</a>
 </p>
 
-## Where can I host Lavalink?
+## 📦 Where can I host Lavalink?
 
-- [Windows](#windows)
-- [Linux](#linux)
-- [Replit](#replit)
-
-## Windows
+<details>
+<summary><strong>Windows</strong></summary>
 
 1. **Setup the server:**
-```powershell
-# Run Windows PowerShell as administrator
-cd "C:\"
-bitsadmin /transfer myDownloadJob /download /priority normal https://raw.githubusercontent.com/LucasB25/lavalink-server/main/LavalinkWindows/ServerSetup.ps1 C:\ServerSetup.ps1
-& .\ServerSetup.ps1
-```
+    ```powershell
+    # Run Windows PowerShell as Administrator
+    cd "C:\"
+    bitsadmin /transfer myDownloadJob /download /priority normal https://raw.githubusercontent.com/LucasB25/lavalink-server/main/LavalinkWindows/ServerSetup.ps1 C:\ServerSetup.ps1
+    & .\ServerSetup.ps1
+    ```
 
 2. ⚠️ **Restart Windows** ⚠️
 
 3. **Run ServerSetup.ps1 again:**
-```powershell
-# Run Windows PowerShell as administrator
-cd "C:\"
-& .\ServerSetup.ps1
-```
+    ```powershell
+    # Run Windows PowerShell as Administrator
+    cd "C:\"
+    & .\ServerSetup.ps1
+    ```
 
 4. **Setup Lavalink:**
-```powershell
-# Run Windows PowerShell as administrator
-cd "C:\"
-bitsadmin /transfer myDownloadJob /download /priority normal https://raw.githubusercontent.com/LucasB25/lavalink-server/main/LavalinkWindows/LavalinkSetup.ps1 C:\LavalinkSetup.ps1
-& .\LavalinkSetup.ps1
-```
+    ```powershell
+    # Run Windows PowerShell as Administrator
+    cd "C:\"
+    bitsadmin /transfer myDownloadJob /download /priority normal https://raw.githubusercontent.com/LucasB25/lavalink-server/main/LavalinkWindows/LavalinkSetup.ps1 C:\LavalinkSetup.ps1
+    & .\LavalinkSetup.ps1
+    ```
 
-5. **Config application.yml:**
-```bash
-Edit: C:\LavalinkServer\application.yml
-# EDIT
-  - email: "your account mail" # Email of Google account
-  - password: "your account password" # Password of Google account
-  # If you want to use other sources (Spotify, AppleMusic, Deezer, YandexMusic & FloweryTTS), enable and configure them!
-```
+5. **Configure `application.yml`:**
+    ```yaml
+    # Edit C:\LavalinkServer\application.yml
+    # Email of your Google account
+    email: "your.email@example.com"
+    # Password of your Google account
+    password: "your-password"
 
-6. **How to start it 24/7:**
-```powershell
-cd "C:\LavalinkServer"
-pm2 start --name Lavalink --max-memory-restart 4G java -- -jar Lavalink.jar
-```
+    # If you want to use other sources like Spotify, AppleMusic, Deezer, YandexMusic & FloweryTTS, enable and configure them!
+    ```
 
-## Linux
+6. **Start Lavalink 24/7:**
+    ```powershell
+    cd "C:\LavalinkServer"
+    pm2 start --name Lavalink --max-memory-restart 4G java -- -jar Lavalink.jar
+    ```
+</details>
 
-1. **Install sudo and wget:**
-```bash
-sudo apt-get install -y sudo wget 
-```
+<details>
+<summary><strong>Linux</strong></summary>
 
-2. **Switch to root user and navigate to the home directory:**
-```bash
-sudo su
-cd ~
-```
+1. **Install required packages:**
+    ```bash
+    sudo apt-get install -y sudo wget
+    ```
+
+2. **Switch to root and navigate to home directory:**
+    ```bash
+    sudo su
+    cd ~
+    ```
 
 3. **Setup the server:**
-```bash
-wget -O ServerSetup.sh https://raw.githubusercontent.com/LucasB25/lavalink-server/main/LavalinkLinux/ServerSetup.sh
-chmod +rwx ServerSetup.sh
-./ServerSetup.sh
-```
+    ```bash
+    wget -O ServerSetup.sh https://raw.githubusercontent.com/LucasB25/lavalink-server/main/LavalinkLinux/ServerSetup.sh
+    chmod +rwx ServerSetup.sh
+    ./ServerSetup.sh
+    ```
 
-4. **Switch to root user and navigate to the home directory:**
-```bash
-sudo su
-cd ~
-```
+4. **Setup Lavalink:**
+    ```bash
+    wget -O LavalinkSetup.sh https://raw.githubusercontent.com/LucasB25/lavalink-server/main/LavalinkLinux/LavalinkSetup.sh
+    chmod +rwx LavalinkSetup.sh
+    ./LavalinkSetup.sh
+    ```
 
-5. **Setup Lavalink:**
-```bash
-wget -O LavalinkSetup.sh https://raw.githubusercontent.com/LucasB25/lavalink-server/main/LavalinkLinux/LavalinkSetup.sh
-chmod +rwx LavalinkSetup.sh
-./LavalinkSetup.sh
-```
+5. **Configure `application.yml`:**
+    ```bash
+    sudo nano /home/YOUR_USER_NAME/lavalink/application.yml
+    # Email of your Google account
+    email: "your.email@example.com"
+    # Password of your Google account
+    password: "your-password"
 
-6. **Config application.yml:**
-```bash
-sudo nano /home/YOUR_USER_NAME/lavalink/application.yml
-# EDIT
-  - email: "your account mail" # Email of Google account
-  - password: "your account password" # Password of Google account
-  # If you want to use other sources (Spotify, AppleMusic, Deezer, YandexMusic & FloweryTTS), enable and configure them!
-```
+    # If you want to use other sources like Spotify, AppleMusic, Deezer, YandexMusic & FloweryTTS, enable and configure them!
+    ```
 
-7. **Restart Lavalink:**
-```bash
-sudo systemctl daemon-reload
-sudo systemctl restart lavalink
-```
+6. **Restart Lavalink:**
+    ```bash
+    sudo systemctl daemon-reload
+    sudo systemctl restart lavalink
+    ```
 
-## Systemd Service Commands
+### Systemd Service Commands
 
 - **Reload Systemd daemon:**
-```bash
-sudo systemctl daemon-reload
-```
+    ```bash
+    sudo systemctl daemon-reload
+    ```
 
 - **Enable a service at boot:**
-```bash
-sudo systemctl enable lavalink
-```
+    ```bash
+    sudo systemctl enable lavalink
+    ```
 
 - **Start a service:**
-```bash
-sudo systemctl start lavalink
-```
+    ```bash
+    sudo systemctl start lavalink
+    ```
 
 - **View service logs:**
-```bash
-sudo journalctl -u lavalink
-```
+    ```bash
+    sudo journalctl -u lavalink
+    ```
 
 - **Check service status:**
-```bash
-sudo systemctl status lavalink
-```
+    ```bash
+    sudo systemctl status lavalink
+    ```
 
 - **Stop a service:**
-```bash
-sudo systemctl stop lavalink
-```
+    ```bash
+    sudo systemctl stop lavalink
+    ```
 
 - **Restart a service:**
-```bash
-sudo systemctl restart lavalink
-```
+    ```bash
+    sudo systemctl restart lavalink
+    ```
 
-## Replit
+</details>
+
+<details>
+<summary><strong>Replit</strong></summary>
 
 [![Run on Replit](https://repl.it/badge/github/LucasB25/lavalink-server)](https://repl.it/github/LucasB25/lavalink-server)
 
-**Connecting**
+### Connecting
 
-- Lavalink's port will always be 443 in Replit.
-application.yml
-# EDITE
-```yml
-server: # REST and WS server
-  port: 443
-  address: 0.0.0.0
-  http2:
-    enabled: false # Whether to enable HTTP/2 support
-```
-```yml
-- email: "your account mail" # Email of Google account
-- password: "your account password" # Password of Google account
-# If you want to use other sources (Spotify, AppleMusic, Deezer, YandexMusic & FloweryTTS), enable and configure them!
-```
+- Lavalink's port will always be 443 on Replit.
+- **Configure `application.yml`:**
+    ```yaml
+    server: # REST and WS server
+      port: 443
+      address: 0.0.0.0
+      http2:
+        enabled: false # Whether to enable HTTP/2 support
+
+    # Email of your Google account
+    email: "your.email@example.com"
+    # Password of your Google account
+    password: "your-password"
+
+    # If you want to use other sources like Spotify, AppleMusic, Deezer, YandexMusic & FloweryTTS, enable and configure them!
+    ```
+
 - Default password: `youshallnotpass`.
-- Using custom Lavalink client.
 
-**Important notes**
+- **Example Configuration:**
+    ```json
+    {
+      "host": "lavalink.LucasB25.repl.co",
+      "password": "youshallnotpass",
+      "port": 443,
+      "identifier": "lavalink v4",     
+      "secure": true
+    }
+    ```
 
-- To keep this 24/7, you need to make an account on UptimeRobot service and make HTTP requests to your app every 5 minutes. For example, if your app is named - lavalink-repl and your Replit username is ahmasa, then make an HTTP request to https://lavalink-repl.ahmasa.repl.co.
-- Do not forget to set your password (in application.yml file).
-- Connection to node must be secured, e.g., https/wss.
+### Important Notes
 
-**Example Configuration**
+- To keep the server running 24/7, use a service like UptimeRobot to send HTTP requests to your app every 5 minutes. For example, if your app is named `lavalink-repl` and your Replit username is `ahmasa`, make an HTTP request to `https://lavalink-repl.ahmasa.repl.co`.
+- Ensure your connection to the node is secure, e.g., use `https/wss`.
+- Don’t forget to set your password in the `application.yml` file.
 
-```json
-{
-  "host": "lavalink.LucasB25.repl.co",
-  "password": "youshallnotpass",
-  "port": 443,
-  "identifier": "lavalink v4",     
-  "secure": true
-}
-```
+</details>
 
 ## 👥 Contributors
 
-Thanks goes to these wonderful people :
+Thanks to these wonderful people:
 
 <a href="https://github.com/LucasB25/lavalink-server/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=LucasB25/lavalink-server" />

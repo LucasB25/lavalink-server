@@ -3,7 +3,7 @@
 # Download the latest Lavalink release
 echo "Downloading Lavalink JAR..."
 if ! curl -sSfL "https://github.com/lavalink-devs/Lavalink/releases/latest/download/Lavalink.jar" -o Lavalink.jar; then
-  echo "Failed to download Lavalink JAR. Exiting."
+  echo "Error: Failed to download Lavalink JAR. Exiting."
   exit 1
 fi
 
@@ -11,10 +11,8 @@ echo "Lavalink JAR downloaded successfully."
 
 # Start Lavalink
 echo "Starting Lavalink..."
-java -jar Lavalink.jar
-
-if [[ $? -ne 0 ]]; then
-  echo "Failed to start Lavalink."
+if ! java -jar Lavalink.jar; then
+  echo "Error: Failed to start Lavalink. Exiting."
   exit 1
 fi
 

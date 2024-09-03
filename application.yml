@@ -17,6 +17,7 @@ plugins:
       tiktok: true # tiktok.com
       mixcloud: true # mixcloud.com
       soundgasm: true # soundgasm.net
+      pixeldrain: true # pixeldrain.com
   jiosaavn:
     apiURL: "https://saavn.dev/api" # The API URL for JioSaavn
   lavasrc:
@@ -85,11 +86,17 @@ plugins:
       - WEB
       - WEBEMBEDDED
       - ANDROID_TESTSUITE
-      - ANDROID_LITE
       - ANDROID_MUSIC
+      - TVHTML5EMBEDDED
+      - ANDROID_LITE
       - MEDIA_CONNECT
       - IOS
-      - TVHTML5EMBEDDED
+      # This secure your lavalink is working and playing music if you used this two things below.
+    oauth:
+      enabled: true # IF YOU RUN YOUR LAVALINK CHECK YOUR CONSOLE AND CLICK THE GOOGLE.COM/DEVICES LINK AND THERE IS A CODE THAT YOU NEED TO PUT IN TO THE GOOGLE AND USE A BURNER ACCOUNT OR ALT ACCOUNT THERE IS A POSSIBLE CHANGE YOU CAN GET BANNED FROM GOOGLE OR YOUTUBE SO JUST USE A BURNER ACCOUNT IN CASE.
+    #pot:
+      #   token: "" # THIS REQUIRE INSTALLING https://github.com/iv-org/youtube-trusted-session-generator THIS IS A PYTHON FILE INSTALL THE REQUIREMENTS AND RUN PYTON INDEX FILE AND AFTER RUNNING YOU WILL RECIVE AND TOKEN AND VISTOR DATA AND PASTE IT BELOW.
+      #   visitorData: ""
 lavalink:
   plugins:
     - dependency: "com.github.appujet:jiosaavn-plugin:0.1.7"
@@ -102,7 +109,7 @@ lavalink:
       snapshot: false # set to true if you want to use snapshot builds.
     - dependency: "com.github.topi314.sponsorblock:sponsorblock-plugin:3.0.1"
       snapshot: false # set to true if you want to use snapshot builds.
-    - dependency: "dev.lavalink.youtube:youtube-plugin:1.7.1"
+    - dependency: "dev.lavalink.youtube:youtube-plugin:1.7.2"
       snapshot: false # set to true if you want to use snapshot builds.
   pluginsDir: './plugins'
   server:
