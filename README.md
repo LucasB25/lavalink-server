@@ -192,6 +192,11 @@
 
 </details>
 
+## ☕ Donate
+
+Do you like this project? Support it by donating!
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/T6T0132KK5)
+
 ## 👥 Contributors
 
 Thanks to these wonderful people:
