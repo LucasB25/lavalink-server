@@ -185,6 +185,7 @@
 <details>
 <summary><strong>Source Configuration</strong></summary>
 
+# Remember to activate the source
 - Spotify: 
     ### https://developer.spotify.com/dashboard/applications
     - clientId: "your client id"
