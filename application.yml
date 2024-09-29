@@ -55,7 +55,7 @@ plugins:
       # - "dzisrc:%ISRC%"
       - "ytsearch:%QUERY%"
       # - "dzsearch:%QUERY%"
-       - "scsearch:%QUERY%"
+      - "scsearch:%QUERY%"
     sources:
       spotify: false # Enable Spotify source
       applemusic: false # Enable Apple Music source
