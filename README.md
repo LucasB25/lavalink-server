@@ -160,8 +160,6 @@
     server: # REST and WS server
       port: 443
       address: 0.0.0.0
-      http2:
-        enabled: false # Whether to enable HTTP/2 support
 
     # Email of your Google account
     email: "your.email@example.com"
