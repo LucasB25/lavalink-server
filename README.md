@@ -79,7 +79,7 @@
 
 3. **Setup the server:**
     ```bash
-    wget -O LavalinkSetup.sh https://raw.githubusercontent.com/LucasB25/lavalink-server/DEV/SetupLinux/LavalinkSetup.sh
+    wget -O LavalinkSetup.sh https://raw.githubusercontent.com/LucasB25/lavalink-server/main/SetupLinux/LavalinkSetup.sh
     chmod +rwx LavalinkSetup.sh
     ./LavalinkSetup.sh
     ```

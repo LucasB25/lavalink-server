@@ -12,7 +12,7 @@ fi
 
 # Define URLs for Lavalink JAR and application.yml
 LAVALINK_JAR_URL="https://github.com/lavalink-devs/Lavalink/releases/latest/download/Lavalink.jar"
-APPLICATION_YML_URL="https://raw.githubusercontent.com/LucasB25/lavalink-server/DEV/application.yml"
+APPLICATION_YML_URL="https://raw.githubusercontent.com/LucasB25/lavalink-server/main/application.yml"
 
 # Create Lavalink directory
 LAVALINK_DIR="/opt/lavalink"
