@@ -18,6 +18,29 @@ APPLICATION_YML_URL="https://raw.githubusercontent.com/LucasB25/lavalink-server/
 LAVALINK_DIR="/opt/lavalink"
 mkdir -p $LAVALINK_DIR
 
+# Install Java 8 if not installed
+if ! java -version 2>&1 | grep -q "1.8"; then
+  echo "Java 8 is not installed. Installing..."
+  sudo apt-get update
+  sudo apt-get install -y openjdk-8-jre-headless
+  if [ $? -ne 0 ]; then
+    echo "Error installing Java 8."
+    exit 1
+  fi
+else
+  echo "Java 8 is already installed."
+fi
+
+# Verify Java installation
+JAVA_PATH=$(update-alternatives --list java | grep java-8)
+if [ -z "$JAVA_PATH" ]; then
+  echo "Java 8 is not properly installed."
+  exit 1
+fi
+
+# Set Java 8 as the default version
+sudo update-alternatives --set java $JAVA_PATH
+
 # Download Lavalink.jar
 echo "Downloading Lavalink.jar..."
 curl -L $LAVALINK_JAR_URL -o $LAVALINK_DIR/Lavalink.jar
@@ -50,7 +73,7 @@ After=syslog.target network.target
 [Service]
 User=root
 WorkingDirectory=$LAVALINK_DIR
-ExecStart=java -Xmx4G -jar $LAVALINK_DIR/Lavalink.jar
+ExecStart=$JAVA_PATH -Xmx4G -jar $LAVALINK_DIR/Lavalink.jar
 SuccessExitStatus=143
 TimeoutStopSec=20
 Restart=on-failure
