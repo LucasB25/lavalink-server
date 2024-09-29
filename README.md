@@ -79,7 +79,7 @@
 
 3. **Setup the server:**
     ```bash
-    wget -O LavalinkSetup.sh https://raw.githubusercontent.com/LucasB25/lavalink-server/main/SetupLinux/LavalinkSetup.sh
+    wget -O LavalinkSetup.sh https://raw.githubusercontent.com/LucasB25/lavalink-server/DEV/SetupLinux/LavalinkSetup.sh
     chmod +rwx LavalinkSetup.sh
     ./LavalinkSetup.sh
     ```
@@ -92,7 +92,7 @@
     # Password of your Google account
     password: "your-password"
     ```
-    ### If you want to use [Other Sources](https://github.com/LucasB25/lavalink-server/tree/DEV?tab=readme-ov-file#remember-to-activate-the-source)
+    ### Go (Source Configuration)
 
 5. **Restart Lavalink:**
     ```bash
@@ -185,7 +185,6 @@
 <details>
 <summary><strong>Source Configuration</strong></summary>
 
-# Remember to activate the source
 - Spotify: 
     ### https://developer.spotify.com/dashboard/applications
     - clientId: "your client id"
