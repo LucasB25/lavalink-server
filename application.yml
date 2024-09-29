@@ -1,11 +1,11 @@
-server: # REST and WS server
-  port: 2333 # The port that the server listens on
+server:
+  port: 2333
   address: 0.0.0.0
 plugins:
   youtube:
     enabled: true
     oauth:
-      enabled: true
+      enabled: false
     allowSearch: true
     allowDirectVideoIds: true
     allowDirectPlaylistIds: true
@@ -41,7 +41,7 @@ plugins:
       searching: false
       playback: true
   jiosaavn:
-    apiURL: "https://saavn.dev/api" # The API URL for JioSaavn
+    apiURL: "https://saavn.dev/api"
   lavalyrics:
     # sources is used to sort the different lyrics sources by priority (from highest to lowest)
     sources:
@@ -84,9 +84,9 @@ plugins:
       playlistLoadLimit: 3 # The number of pages at 300 tracks each
       albumLoadLimit: 3 # The number of pages at 300 tracks each
     deezer:
-      masterDecryptionKey: "your master decryption key" 
-      # arl: "your deezer arl" # the arl cookie used for accessing the deezer api this is optional but required for formats above MP3_128
-      formats: [ "FLAC", "MP3_320", "MP3_256", "MP3_128", "MP3_64", "AAC_64" ] # the formats you want to use for the deezer tracks. "FLAC", "MP3_320", "MP3_256" & "AAC_64" are only available for premium users and require a valid arl
+      masterDecryptionKey: "your master decryption key"
+      # arl: "your deezer arl"
+      formats: [ "FLAC", "MP3_320", "MP3_256", "MP3_128", "MP3_64", "AAC_64" ]
     yandexmusic:
       accessToken: "your access token"
       playlistLoadLimit: 1 # The number of pages at 100 tracks each
@@ -126,17 +126,17 @@ lavalink:
     - dependency: "com.github.appujet:jiosaavn-plugin:0.1.7"
       repository: "https://jitpack.io"
     - dependency: "com.dunctebot:skybot-lavalink-plugin:1.7.0"
-      snapshot: false # set to true if you want to use snapshot builds.
+      snapshot: false
     - dependency: "com.github.topi314.lavasearch:lavasearch-plugin:1.0.0"
-      snapshot: false # set to true if you want to use snapshot builds (see below).
+      snapshot: false
     - dependency: "com.github.topi314.lavalyrics:lavalyrics-plugin:1.0.0"
-      snapshot: false # set to true if you want to use snapshot builds (see below).
+      snapshot: false
     - dependency: "com.github.topi314.lavasrc:lavasrc-plugin:4.3.0"
-      snapshot: false # set to true if you want to use snapshot builds.
+      snapshot: false
     - dependency: "com.github.topi314.sponsorblock:sponsorblock-plugin:3.0.1"
-      snapshot: false # set to true if you want to use snapshot builds.
+      snapshot: false
     - dependency: "dev.lavalink.youtube:youtube-plugin:1.8.3"
-      snapshot: false # set to true if you want to use snapshot builds.
+      snapshot: false
   pluginsDir: './plugins'
   server:
     password: "youshallnotpass"
@@ -161,14 +161,14 @@ lavalink:
       rotation: true
       channelMix: true
       lowPass: true
-    bufferDurationMs: 225 # The duration of the NAS buffer. Higher values fare better against longer GC pauses. Duration <= 0 to disable JDA-NAS. Minimum of 40ms, lower values may introduce pauses.
-    frameBufferDurationMs: 5000 # How many milliseconds of audio to keep buffered
-    opusEncodingQuality: 5 # Opus encoder quality. Valid values range from 0 to 10, where 10 is best quality but is the most expensive on the CPU.
-    resamplingQuality: MEDIUM # Quality of resampling operations. Valid values are LOW, MEDIUM and HIGH, where HIGH uses the most CPU.
-    trackStuckThresholdMs: 5000 # The threshold for how long a track can be stuck. A track is stuck if does not return any audio data.
-    youtubePlaylistLoadLimit: 3 # Number of pages at 100 each
-    playerUpdateInterval: 5 # How frequently to send player updates to clients, in seconds
-    nonAllocatingFrameBuffer: false 
+    bufferDurationMs: 225
+    frameBufferDurationMs: 5000
+    opusEncodingQuality: 5
+    resamplingQuality: MEDIUM
+    trackStuckThresholdMs: 5000
+    youtubePlaylistLoadLimit: 3
+    playerUpdateInterval: 5
+    nonAllocatingFrameBuffer: false
     useSeekGhosting: true
     youtubeSearchEnabled: true
     soundcloudSearchEnabled: true
