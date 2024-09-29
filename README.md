@@ -195,30 +195,30 @@
 <details>
 <summary><strong>Source Configuration</strong></summary>
 
-### Spotify: 
-    # https://developer.spotify.com/dashboard/applications
+- Spotify: 
+    ### https://developer.spotify.com/dashboard/applications
     - clientId: "your client id"
     - clientSecret: "your client secret"
 
-    # https://github.com/topi314/LavaSrc#spotify
+    ### https://github.com/topi314/LavaSrc#spotify
     - spDc: "your sp dc cookie"
 
-### AppleMusic: 
-    # https://github.com/topi314/LavaSrc#apple-music
+- AppleMusic: 
+    ### https://github.com/topi314/LavaSrc#apple-music
     - mediaAPIToken: "your apple music api token"
 
-### Deezer: 
+- Deezer: 
     - masterDecryptionKey: "your master decryption key"
 
-    # https://github.com/topi314/LavaSrc#deezer
+    ### https://github.com/topi314/LavaSrc#deezer
     - arl: "your deezer arl"
 
-### YandexMusic: 
-    # https://github.com/topi314/LavaSrc#yandex-music
+- YandexMusic: 
+    ### https://github.com/topi314/LavaSrc#yandex-music
     - accessToken: "your access token"
 
-### VkMusic: 
-    # https://github.com/topi314/LavaSrc#vk-music
+- VkMusic: 
+    ### https://github.com/topi314/LavaSrc#vk-music
     - userToken: "your user token"
 
 </details>
