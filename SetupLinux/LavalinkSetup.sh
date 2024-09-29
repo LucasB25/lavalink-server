@@ -45,15 +45,15 @@ echo "Creating Lavalink service..."
 cat <<EOF > /etc/systemd/system/lavalink.service
 [Unit]
 Description=Lavalink Server
-After=network.target
+After=syslog.target network.target
 
 [Service]
 User=root
 WorkingDirectory=$LAVALINK_DIR
-ExecStart=/usr/bin/java -jar Lavalink.jar
+ExecStart=java -Xmx4G -jar $LAVALINK_DIR/Lavalink.jar
 SuccessExitStatus=143
 TimeoutStopSec=20
-Restart=always
+Restart=on-failure
 RestartSec=5
 
 [Install]
