@@ -79,30 +79,22 @@
 
 3. **Setup the server:**
     ```bash
-    wget -O ServerSetup.sh https://raw.githubusercontent.com/LucasB25/lavalink-server/main/LavalinkLinux/ServerSetup.sh
-    chmod +rwx ServerSetup.sh
-    ./ServerSetup.sh
-    ```
-
-4. **Setup Lavalink:**
-    ```bash
-    wget -O LavalinkSetup.sh https://raw.githubusercontent.com/LucasB25/lavalink-server/main/LavalinkLinux/LavalinkSetup.sh
+    wget -O LavalinkSetup.sh https://raw.githubusercontent.com/LucasB25/lavalink-server/main/SetupLinux/LavalinkSetup.sh
     chmod +rwx LavalinkSetup.sh
     ./LavalinkSetup.sh
     ```
 
-5. **Configure `application.yml`:**
+4. **Configure `application.yml`:**
     ```bash
-    sudo nano /home/YOUR_USER_NAME/lavalink/application.yml
+    sudo nano /opt/lavalink/application.yml
     # Email of your Google account
     email: "your.email@example.com"
     # Password of your Google account
     password: "your-password"
-
-    # If you want to use other sources like Spotify, AppleMusic, Deezer, YandexMusic & FloweryTTS, enable and configure them!
     ```
+    ### Go (Source Configuration)
 
-6. **Restart Lavalink:**
+5. **Restart Lavalink:**
     ```bash
     sudo systemctl daemon-reload
     sudo systemctl restart lavalink

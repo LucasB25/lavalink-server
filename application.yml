@@ -201,7 +201,7 @@ logging:
   file:
     max-history: 5
     max-size: 10MB
-  path: ./logs/
+    path: ./logs/
   level:
     # Set this to DEBUG to enable more detailed logging. Please note that this will likely spam your console.
     root: INFO
