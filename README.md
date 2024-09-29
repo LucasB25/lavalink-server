@@ -92,7 +92,7 @@
     # Password of your Google account
     password: "your-password"
     ```
-    # If you want to use [Other Sources](https://github.com/LucasB25/lavalink-server?tab=readme-ov-file#httpsdeveloperspotifycomdashboardapplications)
+    ### If you want to use [Other Sources](https://github.com/LucasB25/lavalink-server?tab=readme-ov-file#httpsdeveloperspotifycomdashboardapplications)
 
 5. **Restart Lavalink:**
     ```bash
