@@ -1,6 +1,8 @@
 server:
   port: 2333
   address: 0.0.0.0
+  http2:
+  enabled: false # Whether to enable HTTP/2 support
 plugins:
   youtube:
     enabled: true
@@ -123,7 +125,7 @@ plugins:
       pixeldrain: true # pixeldrain.com
 lavalink:
   plugins:
-    - dependency: "com.github.appujet:jiosaavn-plugin:0.1.7"
+    - dependency: "com.github.appujet:jiosaavn-plugin:0.1.8"
       repository: "https://jitpack.io"
     - dependency: "com.dunctebot:skybot-lavalink-plugin:1.7.0"
       snapshot: false
