@@ -43,6 +43,7 @@ plugins:
       searching: false
       playback: true
   jiosaavn:
+    apiURL: "https://jiosaavn-plugin-api.deno.dev" # JioSaavn API URL
     playlistTrackLimit: 50 # The maximum number of tracks to return from given playlist (default 50 tracks)
     recommendationsTrackLimit: 10 # The maximum number of track to return from recommendations (default 10 tracks)
   lavalyrics:
@@ -126,7 +127,7 @@ plugins:
       pixeldrain: true # pixeldrain.com
 lavalink:
   plugins:
-    - dependency: "com.github.appujet:jiosaavn-plugin:1.0.0"
+    - dependency: "com.github.appujet:jiosaavn-plugin:1.0.2"
       repository: "https://jitpack.io"
     - dependency: "com.dunctebot:skybot-lavalink-plugin:1.7.0"
       snapshot: false
