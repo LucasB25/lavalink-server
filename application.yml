@@ -224,6 +224,8 @@ logging:
     com.github.topi314.lavasrc.LavaSrcTools: OFF
     # Set to DEBUG to enable detailed logging for the YouTube audio source manager.
     dev.lavalink.youtube.YoutubeAudioSourceManager: OFF
+    # Youtube Oauth2 Handle logs
+    dev.lavalink.youtube.http.YoutubeOauth2Handler: INFO
 
   request:
     enabled: true
