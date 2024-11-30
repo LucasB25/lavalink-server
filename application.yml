@@ -28,10 +28,10 @@ plugins:
       searching: true
       playback: false
     WEB:
-      playlistLoading: false
+      playlistLoading: true
       videoLoading: true
       searching: true
-      playback: true
+      playback: false
     WEBEMBEDDED:
       playlistLoading: false
       videoLoading: false
