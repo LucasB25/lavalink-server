@@ -14,6 +14,7 @@ plugins:
     clients:
       - "ANDROID_MUSIC"
       - "MUSIC"
+      - "ANDROID_VR"
       - "WEB"
       - "WEBEMBEDDED"
       - "TVHTML5EMBEDDED"
