@@ -10,7 +10,7 @@
 <h1 align="center">Lavalink Server</h1>
 
 <p align="center">
-    <a href="https://discord.gg/AhUJa2kdAr">Support Server</a>
+    <a href="https://discord.gg/nvcznzhkTF">Support Server</a>
     ·
     <a href="https://github.com/LucasB25/lavalink-server/issues">Report Bug & Request Feature</a>
 </p>
