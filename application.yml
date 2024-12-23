@@ -18,17 +18,23 @@ plugins:
       - "WEB"
       - "WEBEMBEDDED"
       - "MWEB"
+      - "TV"
       - "TVHTML5EMBEDDED"
     ANDROID_MUSIC:
       playlistLoading: false
       videoLoading: true
       searching: true
-      playback: true
+      playback: false
     MUSIC:
       playlistLoading: false
-      videoLoading: true
+      videoLoading: false
       searching: true
       playback: false
+    ANDROID_VR:
+      playlistLoading: false
+      videoLoading: true
+      searching: false
+      playback: true
     WEB:
       playlistLoading: true
       videoLoading: true
@@ -36,9 +42,19 @@ plugins:
       playback: false
     WEBEMBEDDED:
       playlistLoading: false
-      videoLoading: false
+      videoLoading: true
       searching: false
       playback: true
+    MWEB:
+      playlistLoading: false
+      videoLoading: true
+      searching: false
+      playback: true
+    TV:
+      playlistLoading: false
+      videoLoading: false
+      searching: false
+      playback: false
     TVHTML5EMBEDDED:
       playlistLoading: false
       videoLoading: false
@@ -141,7 +157,7 @@ lavalink:
       snapshot: false
     - dependency: "com.github.topi314.sponsorblock:sponsorblock-plugin:3.0.1"
       snapshot: false
-    - dependency: "dev.lavalink.youtube:youtube-plugin:1.10.2"
+    - dependency: "dev.lavalink.youtube:youtube-plugin:1.11.2"
       snapshot: false
   pluginsDir: './plugins'
   server:
