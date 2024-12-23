@@ -24,12 +24,17 @@ plugins:
       playlistLoading: false
       videoLoading: true
       searching: true
-      playback: true
+      playback: false
     MUSIC:
       playlistLoading: false
-      videoLoading: true
+      videoLoading: false
       searching: true
       playback: false
+    ANDROID_VR:
+      playlistLoading: false
+      videoLoading: true
+      searching: false
+      playback: true
     WEB:
       playlistLoading: true
       videoLoading: true
@@ -37,9 +42,19 @@ plugins:
       playback: false
     WEBEMBEDDED:
       playlistLoading: false
-      videoLoading: false
+      videoLoading: true
       searching: false
       playback: true
+    MWEB:
+      playlistLoading: false
+      videoLoading: true
+      searching: false
+      playback: true
+    TV:
+      playlistLoading: false
+      videoLoading: false
+      searching: false
+      playback: false
     TVHTML5EMBEDDED:
       playlistLoading: false
       videoLoading: false
