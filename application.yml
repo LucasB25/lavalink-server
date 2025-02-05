@@ -19,7 +19,6 @@ plugins:
       - "WEBEMBEDDED"
       - "MWEB"
       - "TV"
-      - "TVHTML5EMBEDDED"
     clientOptions:
       ANDROID_MUSIC:
         playlistLoading: false
@@ -62,7 +61,7 @@ plugins:
         searching: false
         playback: true
   jiosaavn:
-    apiURL: "https://jiosaavn-plugin-api.vercel.app/api" # JioSaavn API URL
+    apiURL: "https://jiosaavn-plugin-api.deno.dev" # JioSaavn API URL
     playlistTrackLimit: 50 # The maximum number of tracks to return from given playlist (default 50 tracks)
     recommendationsTrackLimit: 10 # The maximum number of track to return from recommendations (default 10 tracks)
   lavalyrics:
@@ -100,7 +99,8 @@ plugins:
       countryCode: "US"
       playlistLoadLimit: 3 # The number of pages at 100 tracks each
       albumLoadLimit: 2 # The number of pages at 50 tracks each
-      localFiles: true
+      localFiles: false
+      resolveArtistsInSearch: true
     applemusic:
       countryCode: "US"
       mediaAPIToken: "your apple music api token"
