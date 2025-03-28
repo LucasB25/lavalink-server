@@ -115,7 +115,7 @@ plugins:
       albumLoadLimit: 3 # The number of pages at 300 tracks each
     deezer:
       masterDecryptionKey: "your master decryption key"
-      # arl: "your deezer arl"
+      arl: "your deezer arl"
       formats: [ "FLAC", "MP3_320", "MP3_256", "MP3_128", "MP3_64", "AAC_64" ]
     yandexmusic:
       accessToken: "your access token"
@@ -153,7 +153,7 @@ plugins:
       pixeldrain: true # pixeldrain.com
 lavalink:
   plugins:
-    - dependency: "com.github.appujet:jiosaavn-plugin:1.0.3"
+    - dependency: "com.github.appujet:jiosaavn-plugin:1.0.4"
       repository: "https://jitpack.io"
     - dependency: "com.dunctebot:skybot-lavalink-plugin:1.7.0"
       snapshot: false
@@ -165,7 +165,7 @@ lavalink:
       snapshot: false
     - dependency: "com.github.topi314.sponsorblock:sponsorblock-plugin:3.0.1"
       snapshot: false
-    - dependency: "dev.lavalink.youtube:youtube-plugin:1.11.5"
+    - dependency: "dev.lavalink.youtube:youtube-plugin:1.20.0"
       snapshot: false
   pluginsDir: './plugins'
   server:
