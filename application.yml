@@ -80,11 +80,11 @@ plugins:
       - yandexMusic
   lavasrc:
     providers:
-      - "ytsearch:\"%ISRC%\""
-      # - "dzisrc:%ISRC%"
-      - "ytsearch:%QUERY%"
-      # - "dzsearch:%QUERY%"
       - "scsearch:%QUERY%"
+      # - "dzisrc:%ISRC%"
+      # - "dzsearch:%QUERY%"
+      - "ytsearch:\"%ISRC%\""
+      - "ytsearch:%QUERY%"
     sources:
       spotify: false # Enable Spotify source
       applemusic: false # Enable Apple Music source
