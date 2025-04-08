@@ -93,6 +93,7 @@ plugins:
       flowerytts: false # Enable Flowery TTS source
       youtube: true # Enable YouTube search source (https://github.com/topi314/LavaSearch)
       vkmusic: false # Enable Vk Music source
+      tidal: false # Enable Tidal source
     lyrics-sources:
       spotify: false # Enable Spotify lyrics source
       deezer: false # Enable Deezer lyrics source
@@ -138,6 +139,10 @@ plugins:
       playlistLoadLimit: 1 # The number of pages at 50 tracks each
       artistLoadLimit: 1 # The number of pages at 10 tracks each
       recommendationsLoadLimit: 10 # Number of tracks
+    tidal:
+      countryCode: "US" # the country code for accessing region-specific content on Tidal (ISO 3166-1 alpha-2).
+      searchLimit: 6 # How many search results should be returned
+      token: "your user token" # the token used for accessing the tidal api.
   dunctebot:
     ttsLanguage: 'en-US'
     sources:
@@ -153,7 +158,7 @@ plugins:
       pixeldrain: true # pixeldrain.com
 lavalink:
   plugins:
-    - dependency: "com.github.appujet:jiosaavn-plugin:1.0.4"
+    - dependency: "com.github.appujet:jiosaavn-plugin:1.0.3"
       repository: "https://jitpack.io"
     - dependency: "com.dunctebot:skybot-lavalink-plugin:1.7.0"
       snapshot: false
@@ -161,7 +166,7 @@ lavalink:
       snapshot: false
     - dependency: "com.github.topi314.lavalyrics:lavalyrics-plugin:1.0.0"
       snapshot: false
-    - dependency: "com.github.topi314.lavasrc:lavasrc-plugin:4.4.2"
+    - dependency: "com.github.topi314.lavasrc:lavasrc-plugin:4.5.0"
       snapshot: false
     - dependency: "com.github.topi314.sponsorblock:sponsorblock-plugin:3.0.1"
       snapshot: false

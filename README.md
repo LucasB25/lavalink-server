@@ -211,6 +211,9 @@
     ### https://github.com/topi314/LavaSrc#vk-music
     - userToken: "your user token"
 
+- Tidal: 
+    ### https://github.com/topi314/LavaSrc#tidal
+    - token: "your user token"
 </details>
 
 ## ☕ Donate
