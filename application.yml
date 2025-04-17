@@ -7,7 +7,8 @@ plugins:
   youtube:
     enabled: true
     oauth:
-      enabled: false
+      enabled: true
+      refreshToken: # When already obtain your refreshToken from console paste it here!
     allowSearch: true
     allowDirectVideoIds: true
     allowDirectPlaylistIds: true
