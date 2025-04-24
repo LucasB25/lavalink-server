@@ -173,8 +173,8 @@ lavalink:
       snapshot: false
     - dependency: "com.github.topi314.sponsorblock:sponsorblock-plugin:3.0.1"
       snapshot: false
-    - dependency: "dev.lavalink.youtube:youtube-plugin:1.12.0"
-      snapshot: false
+    - dependency: "dev.lavalink.youtube:youtube-plugin:130561e"
+      snapshot: true
   pluginsDir: './plugins'
   server:
     password: "youshallnotpass"
