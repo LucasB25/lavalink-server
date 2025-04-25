@@ -12,37 +12,63 @@ plugins:
     allowDirectVideoIds: true
     allowDirectPlaylistIds: true
     clients:
-      - "ANDROID_MUSIC"
-      - "MUSIC"
-      - "WEB"
-      - "WEBEMBEDDED"
+      - "TV"
       - "TVHTML5EMBEDDED"
-    ANDROID_MUSIC:
-      playlistLoading: false
-      videoLoading: true
-      searching: true
-      playback: true
-    MUSIC:
-      playlistLoading: false
-      videoLoading: true
-      searching: true
-      playback: false
-    WEB:
-      playlistLoading: false
-      videoLoading: true
-      searching: true
-      playback: true
-    WEBEMBEDDED:
-      playlistLoading: false
-      videoLoading: false
-      searching: false
-      playback: true
-    TVHTML5EMBEDDED:
-      playlistLoading: false
-      videoLoading: false
-      searching: false
-      playback: true
+      - "WEB"
+      - "MWEB"
+      - "WEBEMBEDDED"
+      - "MUSIC"
+      - "ANDROID_VR"
+      - "ANDROID_MUSIC"
+      - "IOS"
+    clientOptions:
+      TV: #Outh2 Client
+        playback: true #Requires sign-in (Outh2)
+        playlistLoading: false
+        searching: false
+        videoLoading: false
+      TVHTML5EMBEDDED: #Outh2 Client
+        playback: true #Requires sign-in (Outh2)
+        playlistLoading: false
+        searching: true
+        videoLoading: true
+      WEB:
+        playback: true
+        playlistLoading: true
+        searching: true
+        videoLoading: true
+      MWEB:
+        playback: true
+        playlistLoading: true
+        searching: true
+        videoLoading: true
+      WEBEMBEDDED:
+        playback: true
+        playlistLoading: false
+        searching: false
+        videoLoading: true
+      MUSIC:
+        playback: false
+        playlistLoading: false
+        searching: true
+        videoLoading: false
+      ANDROID_VR:
+        playback: true
+        playlistLoading: true
+        searching: true
+        videoLoading: true
+      ANDROID_MUSIC:
+        playback: true
+        playlistLoading: false
+        searching: true
+        videoLoading: true
+      IOS:
+        playback: true
+        playlistLoading: true
+        searching: true
+        videoLoading: true
   jiosaavn:
+    apiURL: "https://jiosaavn-plugin-api.vercel.app/api" # JioSaavn API URL
     playlistTrackLimit: 50 # The maximum number of tracks to return from given playlist (default 50 tracks)
     recommendationsTrackLimit: 10 # The maximum number of track to return from recommendations (default 10 tracks)
   lavalyrics:
@@ -54,11 +80,11 @@ plugins:
       - yandexMusic
   lavasrc:
     providers:
-      - "ytsearch:\"%ISRC%\""
-      # - "dzisrc:%ISRC%"
-      - "ytsearch:%QUERY%"
-      # - "dzsearch:%QUERY%"
       - "scsearch:%QUERY%"
+      # - "dzisrc:%ISRC%"
+      # - "dzsearch:%QUERY%"
+      - "ytsearch:\"%ISRC%\""
+      - "ytsearch:%QUERY%"
     sources:
       spotify: false # Enable Spotify source
       applemusic: false # Enable Apple Music source
@@ -67,6 +93,8 @@ plugins:
       flowerytts: false # Enable Flowery TTS source
       youtube: true # Enable YouTube search source (https://github.com/topi314/LavaSearch)
       vkmusic: false # Enable Vk Music source
+      tidal: false # Enable Tidal source
+      qobuz : false # Enabled qobuz source
     lyrics-sources:
       spotify: false # Enable Spotify lyrics source
       deezer: false # Enable Deezer lyrics source
@@ -80,7 +108,8 @@ plugins:
       countryCode: "US"
       playlistLoadLimit: 3 # The number of pages at 100 tracks each
       albumLoadLimit: 2 # The number of pages at 50 tracks each
-      localFiles: true
+      localFiles: false
+      resolveArtistsInSearch: true
     applemusic:
       countryCode: "US"
       mediaAPIToken: "your apple music api token"
@@ -88,7 +117,7 @@ plugins:
       albumLoadLimit: 3 # The number of pages at 300 tracks each
     deezer:
       masterDecryptionKey: "your master decryption key"
-      # arl: "your deezer arl"
+      arl: "your deezer arl" # the arl cookie used for accessing the deezer api this does not appear to be optional anymore
       formats: [ "FLAC", "MP3_320", "MP3_256", "MP3_128", "MP3_64", "AAC_64" ]
     yandexmusic:
       accessToken: "your access token"
@@ -102,15 +131,21 @@ plugins:
       speed: 1.0 # the speed parameter is a float between 0.5 and 10. The default is 1.0. (0.5 is half speed, 2.0 is double speed, etc.)
       audioFormat: "mp3" # supported formats are: mp3, ogg_opus, ogg_vorbis, aac, wav, and flac. Default format is mp3
     youtube:
-      countryCode: "US"
-      playlistLoadLimit: 1 # The number of pages at 100 tracks each
-      albumLoadLimit: 1 # The number of pages at 50 tracks each
-      artistLoadLimit: 1 # The number of pages at 10 tracks each
+      countryCode: "US" # the country code you want to use for searching & lyrics. See https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2
+      language: "en" # the language code you want to use for searching & lyrics. See https://en.wikipedia.org/wiki/List_of_ISO_639_language_codes
     vkmusic:
       userToken: "your user token"
       playlistLoadLimit: 1 # The number of pages at 50 tracks each
       artistLoadLimit: 1 # The number of pages at 10 tracks each
       recommendationsLoadLimit: 10 # Number of tracks
+    tidal:
+      countryCode: "US" # the country code for accessing region-specific content on Tidal (ISO 3166-1 alpha-2).
+      searchLimit: 6 # How many search results should be returned
+      token: "your user token" # the token used for accessing the tidal api.
+    qobuz:
+      userOauthToken : "your user oauth token" # This token is needed for authorization in the api. Guide: https://github.com/topi314/LavaSrc#qobuz
+      #appId : optional (Only pass it when you are using an old userOauthToken)
+      #appSecret : optional (Only pass it when you are using an old userOauthToken)
   dunctebot:
     ttsLanguage: 'en-US'
     sources:
@@ -126,7 +161,7 @@ plugins:
       pixeldrain: true # pixeldrain.com
 lavalink:
   plugins:
-    - dependency: "com.github.appujet:jiosaavn-plugin:1.0.0"
+    - dependency: "com.github.appujet:jiosaavn-plugin:1.0.3"
       repository: "https://jitpack.io"
     - dependency: "com.dunctebot:skybot-lavalink-plugin:1.7.0"
       snapshot: false
@@ -134,12 +169,12 @@ lavalink:
       snapshot: false
     - dependency: "com.github.topi314.lavalyrics:lavalyrics-plugin:1.0.0"
       snapshot: false
-    - dependency: "com.github.topi314.lavasrc:lavasrc-plugin:4.3.0"
+    - dependency: "com.github.topi314.lavasrc:lavasrc-plugin:4.6.0"
       snapshot: false
     - dependency: "com.github.topi314.sponsorblock:sponsorblock-plugin:3.0.1"
       snapshot: false
-    - dependency: "dev.lavalink.youtube:youtube-plugin:1.8.3"
-      snapshot: false
+    - dependency: "dev.lavalink.youtube:youtube-plugin:130561e2d2f76605eb08b2c9cc4facbf400caccb"
+      snapshot: true
   pluginsDir: './plugins'
   server:
     password: "youshallnotpass"
@@ -164,12 +199,12 @@ lavalink:
       rotation: true
       channelMix: true
       lowPass: true
-    bufferDurationMs: 225
+    bufferDurationMs: 400
     frameBufferDurationMs: 5000
-    opusEncodingQuality: 5
+    opusEncodingQuality: 10
     resamplingQuality: MEDIUM
-    trackStuckThresholdMs: 5000
-    youtubePlaylistLoadLimit: 3
+    trackStuckThresholdMs: 10000
+    youtubePlaylistLoadLimit: 6
     playerUpdateInterval: 5
     nonAllocatingFrameBuffer: false
     useSeekGhosting: true
@@ -223,6 +258,8 @@ logging:
     com.github.topi314.lavasrc.LavaSrcTools: OFF
     # Set to DEBUG to enable detailed logging for the YouTube audio source manager.
     dev.lavalink.youtube.YoutubeAudioSourceManager: OFF
+    # Youtube Oauth2 Handle logs
+    dev.lavalink.youtube.http.YoutubeOauth2Handler: INFO
 
   request:
     enabled: true
