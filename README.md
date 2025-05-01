@@ -213,7 +213,11 @@
 
 - Tidal: 
     ### https://github.com/topi314/LavaSrc#tidal
-    - token: "your user token"
+    - token: "your tidal token"
+
+- Qobuz: 
+    ### https://github.com/topi314/LavaSrc#qobuz
+    - token: "your user oauth token"
 </details>
 
 ## ☕ Donate
