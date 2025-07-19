@@ -186,8 +186,8 @@ lavalink:
       snapshot: false
     - dependency: "com.github.topi314.lavalyrics:lavalyrics-plugin:7d60077"
       snapshot: true
-    - dependency: "com.github.topi314.lavasrc:lavasrc-plugin:dbda8e7"
-      snapshot: true
+    - dependency: "com.github.topi314.lavasrc:lavasrc-plugin:4.7.3"
+      snapshot: false
     - dependency: "com.github.topi314.sponsorblock:sponsorblock-plugin:3.0.1"
       snapshot: false
     - dependency: "dev.lavalink.youtube:youtube-plugin:1.13.3"
