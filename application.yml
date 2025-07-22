@@ -8,7 +8,7 @@ plugins:
     enabled: true
     oauth:
       # setting "enabled: true" is the bare minimum to get OAuth working.
-      enabled: false
+      enabled: false # IF YOU RUN YOUR LAVALINK CHECK YOUR CONSOLE AND CLICK THE GOOGLE.COM/DEVICES LINK AND THERE IS A CODE THAT YOU NEED TO PUT IN TO THE GOOGLE AND USE A BURNER ACCOUNT OR ALT ACCOUNT THERE IS A POSSIBLE CHANGE YOU CAN GET BANNED FROM GOOGLE OR YOUTUBE SO JUST USE A BURNER ACCOUNT IN CASE.
 
       # if you have a refresh token, you may set it below (make sure to uncomment the line to apply it).
       # setting a valid refresh token will skip the OAuth flow entirely. See above note on how to retrieve
@@ -19,6 +19,9 @@ plugins:
       # Initialization is skipped automatically if a valid refresh token is supplied. Leave this commented if you're
       # completing the OAuth flow for the first time/do not have a refresh token.
       # skipInitialization: true
+    #pot:
+    #   token: "" # THIS REQUIRE INSTALLING https://github.com/iv-org/youtube-trusted-session-generator THIS IS A PYTHON FILE INSTALL THE REQUIREMENTS AND RUN PYTON INDEX FILE AND AFTER RUNNING YOU WILL RECIVE AND TOKEN AND VISTOR DATA AND PASTE IT BELOW.
+    #   visitorData: ""
     allowSearch: true
     allowDirectVideoIds: true
     allowDirectPlaylistIds: true
