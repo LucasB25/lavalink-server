@@ -20,8 +20,8 @@ plugins:
       # completing the OAuth flow for the first time/do not have a refresh token.
       # skipInitialization: true
     #pot:
-    #   token: "" # THIS REQUIRE INSTALLING https://github.com/iv-org/youtube-trusted-session-generator THIS IS A PYTHON FILE INSTALL THE REQUIREMENTS AND RUN PYTON INDEX FILE AND AFTER RUNNING YOU WILL RECIVE AND TOKEN AND VISTOR DATA AND PASTE IT BELOW.
-    #   visitorData: ""
+    #  token: "" # THIS REQUIRE INSTALLING https://github.com/iv-org/youtube-trusted-session-generator THIS IS A PYTHON FILE INSTALL THE REQUIREMENTS AND RUN PYTON INDEX FILE AND AFTER RUNNING YOU WILL RECIVE AND TOKEN AND VISTOR DATA AND PASTE IT BELOW.
+    #  visitorData: ""
     allowSearch: true
     allowDirectVideoIds: true
     allowDirectPlaylistIds: true
