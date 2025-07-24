@@ -82,7 +82,7 @@ plugins:
         searching: true
         videoLoading: true
   jiosaavn:
-    apiURL: "https://jiosaavn-plugin-api.vercel.app/api" # JioSaavn API URL
+    apiURL: "https://jiosaavn-plugin-api.vercel.app/api" # JioSaavn API URL (The default link may not work or may be out of date. Deploy your own API on Vercel: https://vercel.com/new/clone?repository-url=https://github.com/appujet/jiosaavn-plugin-api)
     playlistTrackLimit: 50 # The maximum number of tracks to return from given playlist (default 50 tracks)
     recommendationsTrackLimit: 10 # The maximum number of track to return from recommendations (default 10 tracks)
   lavalyrics:
