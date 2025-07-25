@@ -7,8 +7,21 @@ plugins:
   youtube:
     enabled: true
     oauth:
-      enabled: true
-      refreshToken: # When already obtain your refreshToken from console paste it here!
+      # setting "enabled: true" is the bare minimum to get OAuth working.
+      enabled: false # IF YOU RUN YOUR LAVALINK CHECK YOUR CONSOLE AND CLICK THE GOOGLE.COM/DEVICES LINK AND THERE IS A CODE THAT YOU NEED TO PUT IN TO THE GOOGLE AND USE A BURNER ACCOUNT OR ALT ACCOUNT THERE IS A POSSIBLE CHANGE YOU CAN GET BANNED FROM GOOGLE OR YOUTUBE SO JUST USE A BURNER ACCOUNT IN CASE.
+
+      # if you have a refresh token, you may set it below (make sure to uncomment the line to apply it).
+      # setting a valid refresh token will skip the OAuth flow entirely. See above note on how to retrieve
+      # your refreshToken.
+      # refreshToken: "paste your refresh token here if applicable"
+
+      # Set this if you don't want the OAuth flow to be triggered, if you intend to supply a refresh token later.
+      # Initialization is skipped automatically if a valid refresh token is supplied. Leave this commented if you're
+      # completing the OAuth flow for the first time/do not have a refresh token.
+      # skipInitialization: true
+    #pot:
+    #  token: "" # THIS REQUIRE INSTALLING https://github.com/iv-org/youtube-trusted-session-generator THIS IS A PYTHON FILE INSTALL THE REQUIREMENTS AND RUN PYTON INDEX FILE AND AFTER RUNNING YOU WILL RECIVE AND TOKEN AND VISTOR DATA AND PASTE IT BELOW.
+    #  visitorData: ""
     allowSearch: true
     allowDirectVideoIds: true
     allowDirectPlaylistIds: true
@@ -23,13 +36,13 @@ plugins:
       - "ANDROID_MUSIC"
       - "IOS"
     clientOptions:
-      TV: #Outh2 Client
-        playback: true #Requires sign-in (Outh2)
+      TV: #OAuth2 Client
+        playback: true #Requires sign-in (OAuth2)
         playlistLoading: false
         searching: false
         videoLoading: false
-      TVHTML5EMBEDDED: #Outh2 Client
-        playback: true #Requires sign-in (Outh2)
+      TVHTML5EMBEDDED: #OAuth2 Client
+        playback: true #Requires sign-in (OAuth2)
         playlistLoading: false
         searching: true
         videoLoading: true
@@ -69,7 +82,7 @@ plugins:
         searching: true
         videoLoading: true
   jiosaavn:
-    apiURL: "https://jiosaavn-plugin-api.vercel.app/api" # JioSaavn API URL
+    apiURL: "https://jiosaavn-plugin-api.vercel.app/api" # JioSaavn API URL (The default link may not work or may be out of date. Deploy your own API on Vercel: https://vercel.com/new/clone?repository-url=https://github.com/appujet/jiosaavn-plugin-api)
     playlistTrackLimit: 50 # The maximum number of tracks to return from given playlist (default 50 tracks)
     recommendationsTrackLimit: 10 # The maximum number of track to return from recommendations (default 10 tracks)
   lavalyrics:
@@ -132,12 +145,12 @@ plugins:
       arl: "your deezer arl" # the arl cookie used for accessing the deezer api this is not optional anymore
       formats: [ "FLAC", "MP3_320", "MP3_256", "MP3_128", "MP3_64", "AAC_64" ] # the formats you want to use for the deezer tracks. "FLAC", "MP3_320", "MP3_256" & "AAC_64" are only available for premium users and require a valid arl
     yandexmusic:
-      accessToken: "your access token" # the token used for accessing the yandex music api. See https://github.com/TopiSenpai/LavaSrc#yandex-music
+      accessToken: "your access token" # the token used for accessing the yandex music api. See https://github.com/topi314/LavaSrc#yandex-music
       playlistLoadLimit: 1 # The number of pages at 100 tracks each
       albumLoadLimit: 1 # The number of pages at 50 tracks each
       artistLoadLimit: 1 # The number of pages at 10 tracks each
     flowerytts:
-      voice: "default voice" # (case-sensitive) get default voice here https://flowery.pw/docs/flowery/tts-voices-v-1-tts-voices-get
+      voice: "default voice" # (case-sensitive) get default voice here https://api.flowery.pw/v1/tts/voices
       translate: false # whether to translate the text to the native language of voice
       silence: 0 # the silence parameter is in milliseconds. Range is 0 to 10000. The default is 0.
       speed: 1.0 # the speed parameter is a float between 0.5 and 10. The default is 1.0. (0.5 is half speed, 2.0 is double speed, etc.)
