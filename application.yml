@@ -81,10 +81,6 @@ plugins:
         playlistLoading: true
         searching: true
         videoLoading: true
-  jiosaavn:
-    apiURL: "https://jiosaavn-plugin-api.vercel.app/api" # JioSaavn API URL (The default link may not work or may be out of date. Deploy your own API on Vercel: https://vercel.com/new/clone?repository-url=https://github.com/appujet/jiosaavn-plugin-api)
-    playlistTrackLimit: 50 # The maximum number of tracks to return from given playlist (default 50 tracks)
-    recommendationsTrackLimit: 10 # The maximum number of track to return from recommendations (default 10 tracks)
   lavalyrics:
     # sources is used to sort the different lyrics sources by priority (from highest to lowest)
     sources:
@@ -110,12 +106,14 @@ plugins:
       tidal: false # Enable Tidal source
       qobuz: false # Enabled qobuz source
       ytdlp: false # Enable yt-dlp source
+      jiosaavn: false # Enable JioSaavn source
     lyrics-sources:
       spotify: false # Enable Spotify lyrics source
       deezer: false # Enable Deezer lyrics source
       youtube: false # Enable YouTube lyrics source
       yandexmusic: false # Enable Yandex Music lyrics source
       vkmusic: false # Enable Vk Music lyrics source
+      lrcLib: false # Enable LRC Library lyrics source (https://lrclib.net)
     spotify:
       # clientId & clientSecret are required for using spsearch
 #      clientId: "your client id"
@@ -176,6 +174,15 @@ plugins:
       searchLimit: 10 # How many search results should be returned
 #      customLoadArgs: ["-q", "--no-warnings", "--flat-playlist", "--skip-download", "-J"] # Custom arguments to pass to yt-dlp
 #      customPlaybackArgs: ["-q", "--no-warnings", "-f", "bestaudio", "-J"] # Custom arguments for yt-dlp
+    jiosaavn:
+      decryption: # The decryption configuration for the JioSaavn tracks
+        secretKey: "??" # The required secret key used for decryption (Find your own secret key)
+#        algorithm: "DES" # The algorithm used for decryption (Default "DES")
+#        transformation: "DES/ECB/PKCS5Padding" # The transformation used for decryption (Default "DES/ECB/PKCS5Padding")
+#      proxy: # If defined, JioSaavn HTTP requests will be proxied through here. JioSaavn uses region blocking
+#        url: "https://example.org" # The HTTP proxy to use
+#        username: "my-bot" # Optional username to authenticate with the proxy
+#        password: "youshallpass" # Optional password to authenticate with the proxy
   dunctebot:
     ttsLanguage: 'en-US'
     sources:
@@ -191,15 +198,13 @@ plugins:
       pixeldrain: true # pixeldrain.com
 lavalink:
   plugins:
-    - dependency: "com.github.appujet:jiosaavn-plugin:1.0.6"
-      repository: "https://maven.appujet.site/releases"
     - dependency: "com.dunctebot:skybot-lavalink-plugin:1.7.0"
       snapshot: false
     - dependency: "com.github.topi314.lavasearch:lavasearch-plugin:1.0.0"
       snapshot: false
     - dependency: "com.github.topi314.lavalyrics:lavalyrics-plugin:7d60077"
       snapshot: true
-    - dependency: "com.github.topi314.lavasrc:lavasrc-plugin:4.7.3"
+    - dependency: "com.github.topi314.lavasrc:lavasrc-plugin:4.8.0"
       snapshot: false
     - dependency: "com.github.topi314.sponsorblock:sponsorblock-plugin:3.0.1"
       snapshot: false
