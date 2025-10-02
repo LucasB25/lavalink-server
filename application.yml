@@ -6,6 +6,9 @@ server:
 plugins:
   youtube:
     enabled: true
+    remoteCipher:
+      url: "http://localhost:8001" # The base URL of your remote cipher server.
+      password: "your_secret_password" # The password to authenticate with your remote cipher server.
     oauth:
       # setting "enabled: true" is the bare minimum to get OAuth working.
       enabled: false # IF YOU RUN YOUR LAVALINK CHECK YOUR CONSOLE AND CLICK THE GOOGLE.COM/DEVICES LINK AND THERE IS A CODE THAT YOU NEED TO PUT IN TO THE GOOGLE AND USE A BURNER ACCOUNT OR ALT ACCOUNT THERE IS A POSSIBLE CHANGE YOU CAN GET BANNED FROM GOOGLE OR YOUTUBE SO JUST USE A BURNER ACCOUNT IN CASE.
@@ -212,7 +215,7 @@ lavalink:
       snapshot: false
     - dependency: "com.github.topi314.sponsorblock:sponsorblock-plugin:3.0.1"
       snapshot: false
-    - dependency: "dev.lavalink.youtube:youtube-plugin:1.13.5"
+    - dependency: "dev.lavalink.youtube:youtube-plugin:1.14.0"
       snapshot: false
   pluginsDir: './plugins'
   server:
