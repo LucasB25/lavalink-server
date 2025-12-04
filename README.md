@@ -244,4 +244,4 @@ Thanks to these wonderful people:
 [license-shield]: https://img.shields.io/github/license/LucasB25/lavalink-server.svg?style=for-the-badge
 [license-url]: https://github.com/LucasB25/lavalink-server/blob/mains/LICENSE
 [support-shield]: https://img.shields.io/discord/942117923001098260.svg?style=for-the-badge&logo=discord&colorB=7289DA
-[support-server]: https://discord.gg/AhUJa2kdAr
+[support-server]: https://discord.gg/nvcznzhkTF
