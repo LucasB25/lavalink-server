@@ -6,31 +6,23 @@ server:
 plugins:
   youtube:
     enabled: true
-    remoteCipher:
-      url: "http://localhost:8001" # The base URL of your remote cipher server.
-      password: "your_secret_password" # The password to authenticate with your remote cipher server.
     oauth:
       # setting "enabled: true" is the bare minimum to get OAuth working.
-      enabled: false # IF YOU RUN YOUR LAVALINK CHECK YOUR CONSOLE AND CLICK THE GOOGLE.COM/DEVICES LINK AND THERE IS A CODE THAT YOU NEED TO PUT IN TO THE GOOGLE AND USE A BURNER ACCOUNT OR ALT ACCOUNT THERE IS A POSSIBLE CHANGE YOU CAN GET BANNED FROM GOOGLE OR YOUTUBE SO JUST USE A BURNER ACCOUNT IN CASE.
-
-      # if you have a refresh token, you may set it below (make sure to uncomment the line to apply it).
-      # setting a valid refresh token will skip the OAuth flow entirely. See above note on how to retrieve
-      # your refreshToken.
-      # refreshToken: "paste your refresh token here if applicable"
-
-      # Set this if you don't want the OAuth flow to be triggered, if you intend to supply a refresh token later.
-      # Initialization is skipped automatically if a valid refresh token is supplied. Leave this commented if you're
-      # completing the OAuth flow for the first time/do not have a refresh token.
-      # skipInitialization: true
+      enabled: false # Use a burner account! Risk of ban from Google/YouTube.
+      # refreshToken: "your_refresh_token" # Skip OAuth flow if you have one
+      # skipInitialization: true # Set if supplying refresh token later
     #pot:
-    #  token: "" # THIS REQUIRE INSTALLING https://github.com/iv-org/youtube-trusted-session-generator THIS IS A PYTHON FILE INSTALL THE REQUIREMENTS AND RUN PYTON INDEX FILE AND AFTER RUNNING YOU WILL RECIVE AND TOKEN AND VISTOR DATA AND PASTE IT BELOW.
+    #  token: "" # From youtube-trusted-session-generator
     #  visitorData: ""
+    #remoteCipher:
+    #  url: "http://localhost:8001"
+    #  password: "your_secret_password"
     allowSearch: true
     allowDirectVideoIds: true
     allowDirectPlaylistIds: true
+    # Clients queried in order - recommended order for best results
     clients:
       - "TV"
-      - "TVHTML5EMBEDDED"
       - "WEB"
       - "MWEB"
       - "WEBEMBEDDED"
@@ -44,14 +36,9 @@ plugins:
         playlistLoading: false
         searching: false
         videoLoading: false
-      TVHTML5EMBEDDED: #OAuth2 Client
-        playback: true #Requires sign-in (OAuth2)
-        playlistLoading: false
-        searching: true
-        videoLoading: true
       WEB:
-        playback: false
-        playlistLoading: true
+        playback: true
+        playlistLoading: false
         searching: true
         videoLoading: true
       MWEB:
@@ -63,7 +50,7 @@ plugins:
         playback: true
         playlistLoading: false
         searching: false
-        videoLoading: true
+        videoLoading: false
       MUSIC:
         playback: false
         playlistLoading: false
@@ -93,11 +80,14 @@ plugins:
       - yandexMusic
   lavasrc:
     providers:
-      - "scsearch:%QUERY%"
+      # Providers for resolving tracks from Spotify/Apple Music/etc to playable sources
+      # Order matters - first match wins
+      - "ytsearch:\"%ISRC%\"" # Try exact ISRC match first
+      - "ytmsearch:%QUERY%"   # YouTube Music search (better for music)
+      - "ytsearch:%QUERY%"    # YouTube search fallback
       #- "dzisrc:%ISRC%"
       #- "dzsearch:%QUERY%"
-      - "ytsearch:\"%ISRC%\""
-      - "ytsearch:%QUERY%"
+      - "scsearch:%QUERY%"    # SoundCloud fallback
     sources:
       spotify: false # Enable Spotify source
       applemusic: false # Enable Apple Music source
@@ -119,28 +109,21 @@ plugins:
       lrcLib: false # Enable LRC Library lyrics source (https://lrclib.net)
     spotify:
       # clientId & clientSecret are required for using spsearch
-#      clientId: "your client id"
-#      clientSecret: "your client secret"
+      # clientId: "your client id"
+      # clientSecret: "your client secret"
       # spDc: "your sp dc cookie" # the sp dc cookie used for accessing the spotify lyrics api
       countryCode: "US" # the country code you want to use for filtering the artists top tracks. See https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2
-      playlistLoadLimit: 6 # The number of pages at 100 tracks each
-      albumLoadLimit: 6 # The number of pages at 50 tracks each
+      playlistLoadLimit: 3 # The number of pages at 100 tracks each
+      albumLoadLimit: 2 # The number of pages at 50 tracks each
       resolveArtistsInSearch: true # Whether to resolve artists in track search results (can be slow)
-      localFiles: false # Enable local files support with Spotify playlists. Please note `uri` & `isrc` will be `null` & `identifier` will be `"local"`
-      preferAnonymousToken: false # Whether to use the anonymous token for resolving tracks, artists and albums. Spotify generated playlists are always resolved with the anonymous tokens since they do not work otherwise. This requires the customTokenEndpoint to be set.
+      localFiles: true # Enable local files support with Spotify playlists. Please note `uri` & `isrc` will be `null` & `identifier` will be `"local"`
+      preferAnonymousToken: true # Whether to use the anonymous token for resolving tracks, artists and albums. Spotify generated playlists are always resolved with the anonymous tokens since they do not work otherwise. This requires the customTokenEndpoint to be set.
       customTokenEndpoint: "http://localhost:8080/api/token" # Optional custom endpoint for getting the anonymous token. If not set, spotify's default endpoint will be used which might not work. The response must match spotify's anonymous token response format.
     applemusic:
       countryCode: "US" # the country code you want to use for filtering the artists top tracks and language. See https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2
       mediaAPIToken: "your apple music api token" # apple music api token
-      # or specify an apple music key
-      keyID: "your key id"
-      teamID: "your team id"
-      musicKitKey: |
-        -----BEGIN PRIVATE KEY-----
-        your key
-        -----END PRIVATE KEY-----
-      playlistLoadLimit: 6 # The number of pages at 300 tracks each
-      albumLoadLimit: 6 # The number of pages at 300 tracks each
+      playlistLoadLimit: 3 # The number of pages at 300 tracks each
+      albumLoadLimit: 3 # The number of pages at 300 tracks each
     deezer:
       masterDecryptionKey: "your master decryption key" # the master key used for decrypting the deezer tracks. (yes this is not here you need to get it from somewhere else)
       arl: "your deezer arl" # the arl cookie used for accessing the deezer api this is not optional anymore
@@ -150,12 +133,12 @@ plugins:
       playlistLoadLimit: 1 # The number of pages at 100 tracks each
       albumLoadLimit: 1 # The number of pages at 50 tracks each
       artistLoadLimit: 1 # The number of pages at 10 tracks each
-#     proxy: # If defined, YandexMusic HTTP requests will be proxied through here. YandexMusic uses region blocking
-#        url: "https://example.org" # The HTTP proxy to use
-#        username: "my-bot" # Optional username to authenticate with the proxy
-#        password: "youshallpass" # Optional password to authenticate with the proxy
+      # proxy: # If defined, YandexMusic HTTP requests will be proxied through here. YandexMusic uses region blocking
+      #  url: "https://example.org" # The HTTP proxy to use
+      #  username: "my-bot" # Optional username to authenticate with the proxy
+      #  password: "youshallpass" # Optional password to authenticate with the proxy
     flowerytts:
-      voice: "default voice" # (case-sensitive) get default voice here https://api.flowery.pw/v1/tts/voices
+      voice: "Olivia" # (case-sensitive) get default voice here https://api.flowery.pw/v1/tts/voices
       translate: false # whether to translate the text to the native language of voice
       silence: 0 # the silence parameter is in milliseconds. Range is 0 to 10000. The default is 0.
       speed: 1.0 # the speed parameter is a float between 0.5 and 10. The default is 1.0. (0.5 is half speed, 2.0 is double speed, etc.)
@@ -174,8 +157,8 @@ plugins:
       token: "your tidal token" # the token used for accessing the tidal api. See https://github.com/topi314/LavaSrc#tidal
     qobuz:
       userOauthToken : "your user oauth token" # This token is needed for authorization in the api. Guide: https://github.com/topi314/LavaSrc#qobuz
-      #appId : optional (Only pass it when you are using an old userOauthToken)
-      #appSecret : optional (Only pass it when you are using an old userOauthToken)
+      # appId : optional (Only pass it when you are using an old userOauthToken)
+      # appSecret : optional (Only pass it when you are using an old userOauthToken)
     ytdlp:
       path: "yt-dlp" # the path to the yt-dlp executable.
       searchLimit: 10 # How many search results should be returned
@@ -184,12 +167,12 @@ plugins:
     jiosaavn:
       decryption: # The decryption configuration for the JioSaavn tracks
         secretKey: "??" # The required secret key used for decryption (Find your own secret key)
-#        algorithm: "DES" # The algorithm used for decryption (Default "DES")
-#        transformation: "DES/ECB/PKCS5Padding" # The transformation used for decryption (Default "DES/ECB/PKCS5Padding")
-#      proxy: # If defined, JioSaavn HTTP requests will be proxied through here. JioSaavn uses region blocking
-#        url: "https://example.org" # The HTTP proxy to use
-#        username: "my-bot" # Optional username to authenticate with the proxy
-#        password: "youshallpass" # Optional password to authenticate with the proxy
+        algorithm: "DES" # The algorithm used for decryption (Default "DES")
+        transformation: "DES/ECB/PKCS5Padding" # The transformation used for decryption (Default "DES/ECB/PKCS5Padding")
+      # proxy: # If defined, JioSaavn HTTP requests will be proxied through here. JioSaavn uses region blocking
+      #  url: "https://example.org" # The HTTP proxy to use
+      #  username: "my-bot" # Optional username to authenticate with the proxy
+      #  password: "youshallpass" # Optional password to authenticate with the proxy
   dunctebot:
     ttsLanguage: 'en-US'
     sources:
@@ -209,13 +192,13 @@ lavalink:
       snapshot: false
     - dependency: "com.github.topi314.lavasearch:lavasearch-plugin:1.0.0"
       snapshot: false
-    - dependency: "com.github.topi314.lavalyrics:lavalyrics-plugin:7d60077"
-      snapshot: true
+    - dependency: "com.github.topi314.lavalyrics:lavalyrics-plugin:1.1.0"
+      snapshot: false
     - dependency: "com.github.topi314.lavasrc:lavasrc-plugin:4.8.1"
       snapshot: false
     - dependency: "com.github.topi314.sponsorblock:sponsorblock-plugin:3.0.1"
       snapshot: false
-    - dependency: "dev.lavalink.youtube:youtube-plugin:1.16.0"
+    - dependency: "dev.lavalink.youtube:youtube-plugin:1.17.0"
       snapshot: false
   pluginsDir: './plugins'
   server:
@@ -241,14 +224,14 @@ lavalink:
       channelMix: true
       lowPass: true
     nonAllocatingFrameBuffer: false # Setting to true reduces the number of allocations made by each player at the expense of frame rebuilding (e.g. non-instantaneous volume changes)
-    bufferDurationMs: 400 # The duration of the NAS buffer. Higher values fare better against longer GC pauses. Duration <= 0 to disable JDA-NAS. Minimum of 40ms, lower values may introduce pauses.
+    bufferDurationMs: 225 # The duration of the NAS buffer. Higher values fare better against longer GC pauses. Duration <= 0 to disable JDA-NAS. Minimum of 40ms, lower values may introduce pauses.
     frameBufferDurationMs: 5000 # How many milliseconds of audio to keep buffered
-    opusEncodingQuality: 10 # Opus encoder quality. Valid values range from 0 to 10, where 10 is best quality but is the most expensive on the CPU.
+    opusEncodingQuality: 5 # Opus encoder quality. Valid values range from 0 to 10, where 10 is best quality but is the most expensive on the CPU.
     resamplingQuality: LOW # Quality of resampling operations. Valid values are LOW, MEDIUM and HIGH, where HIGH uses the most CPU.
-    trackStuckThresholdMs: 10000 # The threshold for how long a track can be stuck. A track is stuck if does not return any audio data.
+    trackStuckThresholdMs: 5000 # The threshold for how long a track can be stuck. A track is stuck if does not return any audio data.
     useSeekGhosting: true # Seek ghosting is the effect where whilst a seek is in progress, the audio buffer is read from until empty, or until seek is ready.
-    youtubePlaylistLoadLimit: 6 # Number of pages at 100 each
-    playerUpdateInterval: 5 # How frequently to send player updates to clients, in seconds
+    youtubePlaylistLoadLimit: 3 # Number of pages at 100 each
+    playerUpdateInterval: 3 # How frequently to send player updates to clients, in seconds
     youtubeSearchEnabled: true
     soundcloudSearchEnabled: true
     gc-warnings: true
@@ -285,35 +268,18 @@ logging:
     max-size: 10MB
     path: ./logs/
   level:
-    # Set this to DEBUG to enable more detailed logging. Please note that this will likely spam your console.
     root: INFO
-    # Set this to DEBUG to enable more detailed logging from Lavalink.
     lavalink: INFO
-
-    # Set this to TRACE to see all WebSocket messages.
-    lavalink.server.io.SocketContext: OFF
-    # Log all track exceptions (COMMON, SUSPICIOUS & FAULT). Set to DEBUG to enable detailed logging.
-    com.sedmelluq.discord.lavaplayer.tools.ExceptionTools: OFF
-    # Set to DEBUG to enable detailed logging of HTTP requests and responses.
-    com.sedmelluq.discord.lavaplayer.tools.io.PersistentHttpStream: OFF
-    # Set to DEBUG to enable detailed logging of YouTube HTTP requests and responses.
-    com.sedmelluq.discord.lavaplayer.source.youtube.YoutubePersistentHttpStream: OFF
-    # Set to DEBUG to enable detailed logging for the LavaSrc plugin.
-    com.github.topi314.lavasrc.LavaSrcTools: OFF
-    # Set to DEBUG to enable detailed logging for the YouTube audio source manager.
-    dev.lavalink.youtube.YoutubeAudioSourceManager: OFF
-    # Youtube Oauth2 Handle logs
-    dev.lavalink.youtube.http.YoutubeOauth2Handler: INFO
 
   request:
     enabled: true
     includeClientInfo: true
-    includeHeaders: false
+    includeHeaders: true
     includeQueryString: true
     includePayload: true
     maxPayloadLength: 10000
 
   logback:
     rollingpolicy:
-      max-file-size: 1GB
-      max-history: 30
+      max-file-size: 10MB
+      max-history: 5
