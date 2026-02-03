@@ -23,22 +23,22 @@ plugins:
     # Clients queried in order - recommended order for best results
     clients:
       - "TV"
+      - "ANDROID_VR"
       - "WEB"
       - "MWEB"
       - "WEBEMBEDDED"
       - "MUSIC"
-      - "ANDROID_VR"
       - "ANDROID_MUSIC"
       - "IOS"
     clientOptions:
-      TV: #OAuth2 Client
+      TV:
         playback: true #Requires sign-in (OAuth2)
         playlistLoading: false
         searching: false
         videoLoading: false
       WEB:
-        playback: true
-        playlistLoading: false
+        playback: false
+        playlistLoading: true
         searching: true
         videoLoading: true
       MWEB:
@@ -50,7 +50,7 @@ plugins:
         playback: true
         playlistLoading: false
         searching: false
-        videoLoading: false
+        videoLoading: true
       MUSIC:
         playback: false
         playlistLoading: false
