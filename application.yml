@@ -22,14 +22,14 @@ plugins:
     allowDirectPlaylistIds: true
     # Clients queried in order - recommended order for best results
     clients:
-      - "TV"
-      - "ANDROID_VR"
-      - "WEB"
-      - "MWEB"
-      - "WEBEMBEDDED"
-      - "MUSIC"
-      - "ANDROID_MUSIC"
-      - "IOS"
+      - ANDROID_VR
+      - ANDROID_MUSIC
+      - IOS
+      - MWEB
+      - WEB
+      - MUSIC
+      - WEBEMBEDDED
+      - TV
     clientOptions:
       TV:
         playback: true #Requires sign-in (OAuth2)
@@ -37,12 +37,12 @@ plugins:
         searching: false
         videoLoading: false
       WEB:
-        playback: false
+        playback: true
         playlistLoading: true
         searching: true
         videoLoading: true
       MWEB:
-        playback: false
+        playback: true
         playlistLoading: true
         searching: true
         videoLoading: true
